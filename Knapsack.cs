@@ -160,9 +160,11 @@ namespace KnapsackProject
         ///<item>
         /// Weight - Gets the weight of the item
         /// Value - Gets the value of the item.
+        /// ValuePerWeight - Yields a ratio(double) of Value/Weight
         ///</item>
         public uint Weight { get; }
         public uint Value { get; }
+        public double ValuePerWeight => (double)Value / Weight;
 
         /// <summary>
         /// Initializes a new instance of the KnapsackItem class.
@@ -273,6 +275,7 @@ namespace KnapsackProject
         /// <returns>The maximum value that can be obtained within the given capacity.</returns>
         public static uint KnapsackMemo(List<KnapsackItem> items, uint capacity)
         {
+            memo.Clear(); //Clear cache
             return SolveKnapsackHelper(items, capacity, 0);
         }
 
@@ -301,7 +304,15 @@ namespace KnapsackProject
                 return 0;
 
             var key = (remainingCapacity, currentIndex);
-            if (memo.ContainsKey(key)) { return memo[key]; }
+
+            if (memo.ContainsKey(key)) {
+                Console.WriteLine($"Cache hit for key: {key}");
+                return memo[key];
+            }
+            else
+            {
+                Console.WriteLine($"Cache miss for key: {key}");
+            }
 
             uint maxValueWithoutCurrent = SolveKnapsackHelper(items, remainingCapacity, currentIndex + 1);
             uint maxValueWithCurrent = 0;
@@ -316,6 +327,26 @@ namespace KnapsackProject
             uint result = Math.Max(maxValueWithoutCurrent, maxValueWithCurrent);
             memo[key] = result;
             return result;
+        }
+
+
+        public static uint PrimalLPSelectionHeuristic(List<KnapsackItem> items, uint capacity)
+        {
+            List<KnapsackItem>? SortedItems = items.OrderByDescending(item => item.ValuePerWeight).ToList();
+            uint Result = 0;
+            uint remainingCapacity = capacity;
+
+            foreach (var item in SortedItems)
+            {
+                if (item.Weight <= remainingCapacity)
+                {
+                    Result += item.Value;
+                    remainingCapacity -= item.Weight;
+                }
+                else { break; }
+            }
+
+            return Result;
         }
 
         /// <summary>
@@ -440,7 +471,7 @@ namespace KnapsackProject
             var logger = new Logger();
             Stopwatch stopwatch = new Stopwatch();
 
-            const string? ItemsFile = "XSmallItems";
+            const string? ItemsFile = "LargeItems";
             const string? CapacityFile = "Capacity";
             
             logger.Info("COLLECTING DATA...\n");
@@ -453,19 +484,19 @@ namespace KnapsackProject
 
 
             // ****** RECURSIVE ******
-            logger.Info($"Method: Recursive");
-            stopwatch.Reset();
-            stopwatch.Start();
+            //logger.Info($"Method: Recursive");
+            //stopwatch.Reset();
+            //stopwatch.Start();
 
-            uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
+            //uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
 
-            stopwatch.Stop();
+            //stopwatch.Stop();
 
-            decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+            //decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
 
-            logger.Time(ExecTimeRecursive);
-            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
-            logger.Solution(SolutionRecursive);
+            //logger.Time(ExecTimeRecursive);
+            //logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
+            //logger.Solution(SolutionRecursive);
             // ****** RECURSIVE ******
 
             // ****** DP ******
@@ -501,6 +532,22 @@ namespace KnapsackProject
             logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
             logger.Solution(SolutionMemo);
             // ****** MEMO ******
+
+            // ****** LP Heuristic ******
+            logger.Info($"Method: LP Heuristic");
+            stopwatch.Reset();
+            stopwatch.Start();
+
+            uint SolutionLP = PrimalLPSelectionHeuristic(items, UnpackedCapacity);
+
+            stopwatch.Stop();
+
+            decimal ExecTimeLP = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+            logger.Time(ExecTimeLP);
+            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
+            logger.Solution(SolutionLP);
+            // ****** LP ******
 
         }
     }
