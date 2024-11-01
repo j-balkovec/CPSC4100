@@ -1,0 +1,4002 @@
+[
+    {
+        "Weight": 28,
+        "Value": 11
+    },
+    {
+        "Weight": 31,
+        "Value": 6
+    },
+    {
+        "Weight": 10,
+        "Value": 19
+    },
+    {
+        "Weight": 21,
+        "Value": 14
+    },
+    {
+        "Weight": 23,
+        "Value": 9
+    },
+    {
+        "Weight": 36,
+        "Value": 37
+    },
+    {
+        "Weight": 15,
+        "Value": 37
+    },
+    {
+        "Weight": 13,
+        "Value": 26
+    },
+    {
+        "Weight": 31,
+        "Value": 36
+    },
+    {
+        "Weight": 13,
+        "Value": 15
+    },
+    {
+        "Weight": 14,
+        "Value": 6
+    },
+    {
+        "Weight": 11,
+        "Value": 32
+    },
+    {
+        "Weight": 15,
+        "Value": 9
+    },
+    {
+        "Weight": 21,
+        "Value": 17
+    },
+    {
+        "Weight": 19,
+        "Value": 7
+    },
+    {
+        "Weight": 32,
+        "Value": 25
+    },
+    {
+        "Weight": 17,
+        "Value": 27
+    },
+    {
+        "Weight": 16,
+        "Value": 13
+    },
+    {
+        "Weight": 10,
+        "Value": 6
+    },
+    {
+        "Weight": 26,
+        "Value": 8
+    },
+    {
+        "Weight": 28,
+        "Value": 34
+    },
+    {
+        "Weight": 17,
+        "Value": 26
+    },
+    {
+        "Weight": 32,
+        "Value": 34
+    },
+    {
+        "Weight": 8,
+        "Value": 11
+    },
+    {
+        "Weight": 24,
+        "Value": 8
+    },
+    {
+        "Weight": 7,
+        "Value": 32
+    },
+    {
+        "Weight": 28,
+        "Value": 8
+    },
+    {
+        "Weight": 6,
+        "Value": 7
+    },
+    {
+        "Weight": 11,
+        "Value": 14
+    },
+    {
+        "Weight": 11,
+        "Value": 21
+    },
+    {
+        "Weight": 27,
+        "Value": 14
+    },
+    {
+        "Weight": 16,
+        "Value": 36
+    },
+    {
+        "Weight": 37,
+        "Value": 6
+    },
+    {
+        "Weight": 20,
+        "Value": 17
+    },
+    {
+        "Weight": 8,
+        "Value": 29
+    },
+    {
+        "Weight": 13,
+        "Value": 33
+    },
+    {
+        "Weight": 7,
+        "Value": 30
+    },
+    {
+        "Weight": 27,
+        "Value": 23
+    },
+    {
+        "Weight": 6,
+        "Value": 10
+    },
+    {
+        "Weight": 13,
+        "Value": 26
+    },
+    {
+        "Weight": 23,
+        "Value": 35
+    },
+    {
+        "Weight": 27,
+        "Value": 21
+    },
+    {
+        "Weight": 17,
+        "Value": 21
+    },
+    {
+        "Weight": 6,
+        "Value": 13
+    },
+    {
+        "Weight": 20,
+        "Value": 31
+    },
+    {
+        "Weight": 32,
+        "Value": 16
+    },
+    {
+        "Weight": 17,
+        "Value": 10
+    },
+    {
+        "Weight": 24,
+        "Value": 26
+    },
+    {
+        "Weight": 6,
+        "Value": 7
+    },
+    {
+        "Weight": 32,
+        "Value": 37
+    },
+    {
+        "Weight": 12,
+        "Value": 25
+    },
+    {
+        "Weight": 8,
+        "Value": 6
+    },
+    {
+        "Weight": 15,
+        "Value": 17
+    },
+    {
+        "Weight": 29,
+        "Value": 10
+    },
+    {
+        "Weight": 28,
+        "Value": 15
+    },
+    {
+        "Weight": 30,
+        "Value": 30
+    },
+    {
+        "Weight": 26,
+        "Value": 32
+    },
+    {
+        "Weight": 12,
+        "Value": 14
+    },
+    {
+        "Weight": 9,
+        "Value": 24
+    },
+    {
+        "Weight": 13,
+        "Value": 6
+    },
+    {
+        "Weight": 28,
+        "Value": 30
+    },
+    {
+        "Weight": 33,
+        "Value": 34
+    },
+    {
+        "Weight": 21,
+        "Value": 29
+    },
+    {
+        "Weight": 25,
+        "Value": 14
+    },
+    {
+        "Weight": 21,
+        "Value": 22
+    },
+    {
+        "Weight": 8,
+        "Value": 37
+    },
+    {
+        "Weight": 20,
+        "Value": 11
+    },
+    {
+        "Weight": 25,
+        "Value": 32
+    },
+    {
+        "Weight": 16,
+        "Value": 22
+    },
+    {
+        "Weight": 15,
+        "Value": 10
+    },
+    {
+        "Weight": 8,
+        "Value": 18
+    },
+    {
+        "Weight": 26,
+        "Value": 35
+    },
+    {
+        "Weight": 6,
+        "Value": 22
+    },
+    {
+        "Weight": 27,
+        "Value": 37
+    },
+    {
+        "Weight": 24,
+        "Value": 18
+    },
+    {
+        "Weight": 18,
+        "Value": 33
+    },
+    {
+        "Weight": 26,
+        "Value": 16
+    },
+    {
+        "Weight": 15,
+        "Value": 33
+    },
+    {
+        "Weight": 17,
+        "Value": 18
+    },
+    {
+        "Weight": 27,
+        "Value": 10
+    },
+    {
+        "Weight": 36,
+        "Value": 16
+    },
+    {
+        "Weight": 24,
+        "Value": 12
+    },
+    {
+        "Weight": 30,
+        "Value": 19
+    },
+    {
+        "Weight": 27,
+        "Value": 26
+    },
+    {
+        "Weight": 12,
+        "Value": 14
+    },
+    {
+        "Weight": 27,
+        "Value": 9
+    },
+    {
+        "Weight": 16,
+        "Value": 7
+    },
+    {
+        "Weight": 26,
+        "Value": 7
+    },
+    {
+        "Weight": 15,
+        "Value": 10
+    },
+    {
+        "Weight": 29,
+        "Value": 32
+    },
+    {
+        "Weight": 25,
+        "Value": 23
+    },
+    {
+        "Weight": 11,
+        "Value": 23
+    },
+    {
+        "Weight": 13,
+        "Value": 12
+    },
+    {
+        "Weight": 36,
+        "Value": 27
+    },
+    {
+        "Weight": 26,
+        "Value": 23
+    },
+    {
+        "Weight": 26,
+        "Value": 22
+    },
+    {
+        "Weight": 28,
+        "Value": 31
+    },
+    {
+        "Weight": 37,
+        "Value": 27
+    },
+    {
+        "Weight": 28,
+        "Value": 37
+    },
+    {
+        "Weight": 7,
+        "Value": 33
+    },
+    {
+        "Weight": 12,
+        "Value": 10
+    },
+    {
+        "Weight": 37,
+        "Value": 21
+    },
+    {
+        "Weight": 30,
+        "Value": 14
+    },
+    {
+        "Weight": 28,
+        "Value": 7
+    },
+    {
+        "Weight": 7,
+        "Value": 17
+    },
+    {
+        "Weight": 32,
+        "Value": 14
+    },
+    {
+        "Weight": 27,
+        "Value": 13
+    },
+    {
+        "Weight": 7,
+        "Value": 34
+    },
+    {
+        "Weight": 24,
+        "Value": 14
+    },
+    {
+        "Weight": 29,
+        "Value": 7
+    },
+    {
+        "Weight": 17,
+        "Value": 7
+    },
+    {
+        "Weight": 22,
+        "Value": 6
+    },
+    {
+        "Weight": 34,
+        "Value": 24
+    },
+    {
+        "Weight": 17,
+        "Value": 16
+    },
+    {
+        "Weight": 31,
+        "Value": 6
+    },
+    {
+        "Weight": 7,
+        "Value": 19
+    },
+    {
+        "Weight": 25,
+        "Value": 31
+    },
+    {
+        "Weight": 33,
+        "Value": 35
+    },
+    {
+        "Weight": 20,
+        "Value": 33
+    },
+    {
+        "Weight": 36,
+        "Value": 11
+    },
+    {
+        "Weight": 27,
+        "Value": 27
+    },
+    {
+        "Weight": 9,
+        "Value": 11
+    },
+    {
+        "Weight": 24,
+        "Value": 34
+    },
+    {
+        "Weight": 34,
+        "Value": 28
+    },
+    {
+        "Weight": 29,
+        "Value": 26
+    },
+    {
+        "Weight": 21,
+        "Value": 28
+    },
+    {
+        "Weight": 28,
+        "Value": 34
+    },
+    {
+        "Weight": 7,
+        "Value": 37
+    },
+    {
+        "Weight": 37,
+        "Value": 13
+    },
+    {
+        "Weight": 12,
+        "Value": 21
+    },
+    {
+        "Weight": 34,
+        "Value": 14
+    },
+    {
+        "Weight": 31,
+        "Value": 21
+    },
+    {
+        "Weight": 33,
+        "Value": 13
+    },
+    {
+        "Weight": 9,
+        "Value": 17
+    },
+    {
+        "Weight": 12,
+        "Value": 20
+    },
+    {
+        "Weight": 33,
+        "Value": 15
+    },
+    {
+        "Weight": 21,
+        "Value": 20
+    },
+    {
+        "Weight": 35,
+        "Value": 29
+    },
+    {
+        "Weight": 29,
+        "Value": 10
+    },
+    {
+        "Weight": 21,
+        "Value": 11
+    },
+    {
+        "Weight": 28,
+        "Value": 30
+    },
+    {
+        "Weight": 13,
+        "Value": 32
+    },
+    {
+        "Weight": 29,
+        "Value": 7
+    },
+    {
+        "Weight": 34,
+        "Value": 34
+    },
+    {
+        "Weight": 9,
+        "Value": 7
+    },
+    {
+        "Weight": 14,
+        "Value": 16
+    },
+    {
+        "Weight": 21,
+        "Value": 23
+    },
+    {
+        "Weight": 7,
+        "Value": 36
+    },
+    {
+        "Weight": 10,
+        "Value": 11
+    },
+    {
+        "Weight": 19,
+        "Value": 19
+    },
+    {
+        "Weight": 32,
+        "Value": 9
+    },
+    {
+        "Weight": 9,
+        "Value": 35
+    },
+    {
+        "Weight": 24,
+        "Value": 9
+    },
+    {
+        "Weight": 37,
+        "Value": 20
+    },
+    {
+        "Weight": 27,
+        "Value": 15
+    },
+    {
+        "Weight": 35,
+        "Value": 28
+    },
+    {
+        "Weight": 16,
+        "Value": 37
+    },
+    {
+        "Weight": 11,
+        "Value": 31
+    },
+    {
+        "Weight": 26,
+        "Value": 25
+    },
+    {
+        "Weight": 32,
+        "Value": 35
+    },
+    {
+        "Weight": 16,
+        "Value": 31
+    },
+    {
+        "Weight": 29,
+        "Value": 14
+    },
+    {
+        "Weight": 14,
+        "Value": 15
+    },
+    {
+        "Weight": 24,
+        "Value": 26
+    },
+    {
+        "Weight": 14,
+        "Value": 34
+    },
+    {
+        "Weight": 32,
+        "Value": 37
+    },
+    {
+        "Weight": 20,
+        "Value": 12
+    },
+    {
+        "Weight": 7,
+        "Value": 22
+    },
+    {
+        "Weight": 18,
+        "Value": 14
+    },
+    {
+        "Weight": 6,
+        "Value": 28
+    },
+    {
+        "Weight": 14,
+        "Value": 29
+    },
+    {
+        "Weight": 12,
+        "Value": 21
+    },
+    {
+        "Weight": 23,
+        "Value": 28
+    },
+    {
+        "Weight": 13,
+        "Value": 35
+    },
+    {
+        "Weight": 19,
+        "Value": 13
+    },
+    {
+        "Weight": 34,
+        "Value": 31
+    },
+    {
+        "Weight": 16,
+        "Value": 24
+    },
+    {
+        "Weight": 28,
+        "Value": 29
+    },
+    {
+        "Weight": 31,
+        "Value": 6
+    },
+    {
+        "Weight": 36,
+        "Value": 8
+    },
+    {
+        "Weight": 14,
+        "Value": 32
+    },
+    {
+        "Weight": 10,
+        "Value": 16
+    },
+    {
+        "Weight": 13,
+        "Value": 17
+    },
+    {
+        "Weight": 27,
+        "Value": 32
+    },
+    {
+        "Weight": 18,
+        "Value": 31
+    },
+    {
+        "Weight": 8,
+        "Value": 25
+    },
+    {
+        "Weight": 7,
+        "Value": 33
+    },
+    {
+        "Weight": 10,
+        "Value": 16
+    },
+    {
+        "Weight": 35,
+        "Value": 26
+    },
+    {
+        "Weight": 20,
+        "Value": 23
+    },
+    {
+        "Weight": 14,
+        "Value": 9
+    },
+    {
+        "Weight": 7,
+        "Value": 7
+    },
+    {
+        "Weight": 12,
+        "Value": 37
+    },
+    {
+        "Weight": 27,
+        "Value": 34
+    },
+    {
+        "Weight": 31,
+        "Value": 13
+    },
+    {
+        "Weight": 22,
+        "Value": 12
+    },
+    {
+        "Weight": 20,
+        "Value": 18
+    },
+    {
+        "Weight": 36,
+        "Value": 29
+    },
+    {
+        "Weight": 14,
+        "Value": 22
+    },
+    {
+        "Weight": 19,
+        "Value": 13
+    },
+    {
+        "Weight": 15,
+        "Value": 18
+    },
+    {
+        "Weight": 7,
+        "Value": 35
+    },
+    {
+        "Weight": 26,
+        "Value": 14
+    },
+    {
+        "Weight": 22,
+        "Value": 28
+    },
+    {
+        "Weight": 19,
+        "Value": 34
+    },
+    {
+        "Weight": 35,
+        "Value": 36
+    },
+    {
+        "Weight": 34,
+        "Value": 26
+    },
+    {
+        "Weight": 28,
+        "Value": 34
+    },
+    {
+        "Weight": 20,
+        "Value": 16
+    },
+    {
+        "Weight": 32,
+        "Value": 18
+    },
+    {
+        "Weight": 34,
+        "Value": 33
+    },
+    {
+        "Weight": 21,
+        "Value": 11
+    },
+    {
+        "Weight": 12,
+        "Value": 34
+    },
+    {
+        "Weight": 14,
+        "Value": 22
+    },
+    {
+        "Weight": 18,
+        "Value": 22
+    },
+    {
+        "Weight": 27,
+        "Value": 9
+    },
+    {
+        "Weight": 18,
+        "Value": 15
+    },
+    {
+        "Weight": 17,
+        "Value": 7
+    },
+    {
+        "Weight": 21,
+        "Value": 34
+    },
+    {
+        "Weight": 7,
+        "Value": 29
+    },
+    {
+        "Weight": 36,
+        "Value": 14
+    },
+    {
+        "Weight": 26,
+        "Value": 20
+    },
+    {
+        "Weight": 28,
+        "Value": 32
+    },
+    {
+        "Weight": 20,
+        "Value": 35
+    },
+    {
+        "Weight": 9,
+        "Value": 36
+    },
+    {
+        "Weight": 7,
+        "Value": 18
+    },
+    {
+        "Weight": 34,
+        "Value": 19
+    },
+    {
+        "Weight": 25,
+        "Value": 23
+    },
+    {
+        "Weight": 16,
+        "Value": 28
+    },
+    {
+        "Weight": 31,
+        "Value": 23
+    },
+    {
+        "Weight": 9,
+        "Value": 13
+    },
+    {
+        "Weight": 16,
+        "Value": 26
+    },
+    {
+        "Weight": 13,
+        "Value": 21
+    },
+    {
+        "Weight": 12,
+        "Value": 24
+    },
+    {
+        "Weight": 27,
+        "Value": 10
+    },
+    {
+        "Weight": 29,
+        "Value": 36
+    },
+    {
+        "Weight": 35,
+        "Value": 26
+    },
+    {
+        "Weight": 12,
+        "Value": 37
+    },
+    {
+        "Weight": 15,
+        "Value": 35
+    },
+    {
+        "Weight": 33,
+        "Value": 20
+    },
+    {
+        "Weight": 7,
+        "Value": 7
+    },
+    {
+        "Weight": 8,
+        "Value": 26
+    },
+    {
+        "Weight": 36,
+        "Value": 11
+    },
+    {
+        "Weight": 8,
+        "Value": 21
+    },
+    {
+        "Weight": 12,
+        "Value": 17
+    },
+    {
+        "Weight": 35,
+        "Value": 21
+    },
+    {
+        "Weight": 30,
+        "Value": 33
+    },
+    {
+        "Weight": 9,
+        "Value": 31
+    },
+    {
+        "Weight": 10,
+        "Value": 26
+    },
+    {
+        "Weight": 27,
+        "Value": 12
+    },
+    {
+        "Weight": 30,
+        "Value": 16
+    },
+    {
+        "Weight": 11,
+        "Value": 28
+    },
+    {
+        "Weight": 15,
+        "Value": 22
+    },
+    {
+        "Weight": 17,
+        "Value": 36
+    },
+    {
+        "Weight": 25,
+        "Value": 23
+    },
+    {
+        "Weight": 8,
+        "Value": 17
+    },
+    {
+        "Weight": 18,
+        "Value": 35
+    },
+    {
+        "Weight": 31,
+        "Value": 31
+    },
+    {
+        "Weight": 36,
+        "Value": 26
+    },
+    {
+        "Weight": 12,
+        "Value": 24
+    },
+    {
+        "Weight": 14,
+        "Value": 21
+    },
+    {
+        "Weight": 11,
+        "Value": 18
+    },
+    {
+        "Weight": 17,
+        "Value": 26
+    },
+    {
+        "Weight": 26,
+        "Value": 24
+    },
+    {
+        "Weight": 6,
+        "Value": 7
+    },
+    {
+        "Weight": 23,
+        "Value": 16
+    },
+    {
+        "Weight": 28,
+        "Value": 17
+    },
+    {
+        "Weight": 11,
+        "Value": 24
+    },
+    {
+        "Weight": 25,
+        "Value": 10
+    },
+    {
+        "Weight": 13,
+        "Value": 35
+    },
+    {
+        "Weight": 28,
+        "Value": 26
+    },
+    {
+        "Weight": 18,
+        "Value": 27
+    },
+    {
+        "Weight": 15,
+        "Value": 17
+    },
+    {
+        "Weight": 33,
+        "Value": 26
+    },
+    {
+        "Weight": 21,
+        "Value": 13
+    },
+    {
+        "Weight": 27,
+        "Value": 6
+    },
+    {
+        "Weight": 19,
+        "Value": 33
+    },
+    {
+        "Weight": 23,
+        "Value": 25
+    },
+    {
+        "Weight": 14,
+        "Value": 7
+    },
+    {
+        "Weight": 21,
+        "Value": 9
+    },
+    {
+        "Weight": 10,
+        "Value": 30
+    },
+    {
+        "Weight": 22,
+        "Value": 27
+    },
+    {
+        "Weight": 16,
+        "Value": 35
+    },
+    {
+        "Weight": 24,
+        "Value": 26
+    },
+    {
+        "Weight": 30,
+        "Value": 18
+    },
+    {
+        "Weight": 29,
+        "Value": 25
+    },
+    {
+        "Weight": 25,
+        "Value": 30
+    },
+    {
+        "Weight": 31,
+        "Value": 30
+    },
+    {
+        "Weight": 14,
+        "Value": 16
+    },
+    {
+        "Weight": 13,
+        "Value": 7
+    },
+    {
+        "Weight": 16,
+        "Value": 18
+    },
+    {
+        "Weight": 22,
+        "Value": 37
+    },
+    {
+        "Weight": 19,
+        "Value": 25
+    },
+    {
+        "Weight": 30,
+        "Value": 18
+    },
+    {
+        "Weight": 9,
+        "Value": 6
+    },
+    {
+        "Weight": 34,
+        "Value": 6
+    },
+    {
+        "Weight": 13,
+        "Value": 17
+    },
+    {
+        "Weight": 11,
+        "Value": 27
+    },
+    {
+        "Weight": 7,
+        "Value": 12
+    },
+    {
+        "Weight": 10,
+        "Value": 34
+    },
+    {
+        "Weight": 30,
+        "Value": 20
+    },
+    {
+        "Weight": 10,
+        "Value": 7
+    },
+    {
+        "Weight": 11,
+        "Value": 23
+    },
+    {
+        "Weight": 24,
+        "Value": 12
+    },
+    {
+        "Weight": 30,
+        "Value": 34
+    },
+    {
+        "Weight": 29,
+        "Value": 29
+    },
+    {
+        "Weight": 26,
+        "Value": 22
+    },
+    {
+        "Weight": 21,
+        "Value": 36
+    },
+    {
+        "Weight": 15,
+        "Value": 30
+    },
+    {
+        "Weight": 6,
+        "Value": 26
+    },
+    {
+        "Weight": 31,
+        "Value": 33
+    },
+    {
+        "Weight": 37,
+        "Value": 13
+    },
+    {
+        "Weight": 32,
+        "Value": 21
+    },
+    {
+        "Weight": 18,
+        "Value": 25
+    },
+    {
+        "Weight": 32,
+        "Value": 24
+    },
+    {
+        "Weight": 9,
+        "Value": 20
+    },
+    {
+        "Weight": 25,
+        "Value": 17
+    },
+    {
+        "Weight": 25,
+        "Value": 9
+    },
+    {
+        "Weight": 8,
+        "Value": 15
+    },
+    {
+        "Weight": 28,
+        "Value": 35
+    },
+    {
+        "Weight": 26,
+        "Value": 19
+    },
+    {
+        "Weight": 13,
+        "Value": 35
+    },
+    {
+        "Weight": 15,
+        "Value": 27
+    },
+    {
+        "Weight": 30,
+        "Value": 13
+    },
+    {
+        "Weight": 15,
+        "Value": 35
+    },
+    {
+        "Weight": 17,
+        "Value": 36
+    },
+    {
+        "Weight": 12,
+        "Value": 6
+    },
+    {
+        "Weight": 31,
+        "Value": 15
+    },
+    {
+        "Weight": 8,
+        "Value": 26
+    },
+    {
+        "Weight": 19,
+        "Value": 27
+    },
+    {
+        "Weight": 35,
+        "Value": 16
+    },
+    {
+        "Weight": 35,
+        "Value": 29
+    },
+    {
+        "Weight": 21,
+        "Value": 17
+    },
+    {
+        "Weight": 32,
+        "Value": 32
+    },
+    {
+        "Weight": 21,
+        "Value": 22
+    },
+    {
+        "Weight": 24,
+        "Value": 15
+    },
+    {
+        "Weight": 6,
+        "Value": 11
+    },
+    {
+        "Weight": 24,
+        "Value": 23
+    },
+    {
+        "Weight": 13,
+        "Value": 8
+    },
+    {
+        "Weight": 35,
+        "Value": 31
+    },
+    {
+        "Weight": 33,
+        "Value": 19
+    },
+    {
+        "Weight": 17,
+        "Value": 8
+    },
+    {
+        "Weight": 21,
+        "Value": 15
+    },
+    {
+        "Weight": 25,
+        "Value": 28
+    },
+    {
+        "Weight": 22,
+        "Value": 26
+    },
+    {
+        "Weight": 27,
+        "Value": 11
+    },
+    {
+        "Weight": 27,
+        "Value": 8
+    },
+    {
+        "Weight": 23,
+        "Value": 27
+    },
+    {
+        "Weight": 34,
+        "Value": 13
+    },
+    {
+        "Weight": 10,
+        "Value": 17
+    },
+    {
+        "Weight": 12,
+        "Value": 29
+    },
+    {
+        "Weight": 26,
+        "Value": 9
+    },
+    {
+        "Weight": 23,
+        "Value": 36
+    },
+    {
+        "Weight": 14,
+        "Value": 21
+    },
+    {
+        "Weight": 15,
+        "Value": 15
+    },
+    {
+        "Weight": 15,
+        "Value": 30
+    },
+    {
+        "Weight": 12,
+        "Value": 12
+    },
+    {
+        "Weight": 11,
+        "Value": 13
+    },
+    {
+        "Weight": 29,
+        "Value": 27
+    },
+    {
+        "Weight": 33,
+        "Value": 28
+    },
+    {
+        "Weight": 7,
+        "Value": 21
+    },
+    {
+        "Weight": 26,
+        "Value": 6
+    },
+    {
+        "Weight": 30,
+        "Value": 25
+    },
+    {
+        "Weight": 15,
+        "Value": 13
+    },
+    {
+        "Weight": 16,
+        "Value": 35
+    },
+    {
+        "Weight": 11,
+        "Value": 37
+    },
+    {
+        "Weight": 17,
+        "Value": 16
+    },
+    {
+        "Weight": 15,
+        "Value": 12
+    },
+    {
+        "Weight": 11,
+        "Value": 10
+    },
+    {
+        "Weight": 31,
+        "Value": 15
+    },
+    {
+        "Weight": 31,
+        "Value": 20
+    },
+    {
+        "Weight": 19,
+        "Value": 21
+    },
+    {
+        "Weight": 8,
+        "Value": 30
+    },
+    {
+        "Weight": 36,
+        "Value": 30
+    },
+    {
+        "Weight": 32,
+        "Value": 22
+    },
+    {
+        "Weight": 35,
+        "Value": 19
+    },
+    {
+        "Weight": 33,
+        "Value": 16
+    },
+    {
+        "Weight": 20,
+        "Value": 29
+    },
+    {
+        "Weight": 18,
+        "Value": 31
+    },
+    {
+        "Weight": 12,
+        "Value": 30
+    },
+    {
+        "Weight": 37,
+        "Value": 19
+    },
+    {
+        "Weight": 12,
+        "Value": 8
+    },
+    {
+        "Weight": 37,
+        "Value": 30
+    },
+    {
+        "Weight": 12,
+        "Value": 16
+    },
+    {
+        "Weight": 22,
+        "Value": 30
+    },
+    {
+        "Weight": 34,
+        "Value": 22
+    },
+    {
+        "Weight": 14,
+        "Value": 6
+    },
+    {
+        "Weight": 37,
+        "Value": 37
+    },
+    {
+        "Weight": 29,
+        "Value": 29
+    },
+    {
+        "Weight": 24,
+        "Value": 18
+    },
+    {
+        "Weight": 26,
+        "Value": 30
+    },
+    {
+        "Weight": 33,
+        "Value": 33
+    },
+    {
+        "Weight": 16,
+        "Value": 22
+    },
+    {
+        "Weight": 20,
+        "Value": 11
+    },
+    {
+        "Weight": 28,
+        "Value": 14
+    },
+    {
+        "Weight": 13,
+        "Value": 29
+    },
+    {
+        "Weight": 14,
+        "Value": 30
+    },
+    {
+        "Weight": 24,
+        "Value": 31
+    },
+    {
+        "Weight": 29,
+        "Value": 10
+    },
+    {
+        "Weight": 26,
+        "Value": 29
+    },
+    {
+        "Weight": 6,
+        "Value": 36
+    },
+    {
+        "Weight": 36,
+        "Value": 33
+    },
+    {
+        "Weight": 23,
+        "Value": 25
+    },
+    {
+        "Weight": 6,
+        "Value": 15
+    },
+    {
+        "Weight": 14,
+        "Value": 36
+    },
+    {
+        "Weight": 21,
+        "Value": 23
+    },
+    {
+        "Weight": 15,
+        "Value": 19
+    },
+    {
+        "Weight": 30,
+        "Value": 12
+    },
+    {
+        "Weight": 30,
+        "Value": 7
+    },
+    {
+        "Weight": 15,
+        "Value": 30
+    },
+    {
+        "Weight": 28,
+        "Value": 9
+    },
+    {
+        "Weight": 34,
+        "Value": 18
+    },
+    {
+        "Weight": 11,
+        "Value": 29
+    },
+    {
+        "Weight": 20,
+        "Value": 15
+    },
+    {
+        "Weight": 21,
+        "Value": 7
+    },
+    {
+        "Weight": 15,
+        "Value": 27
+    },
+    {
+        "Weight": 23,
+        "Value": 14
+    },
+    {
+        "Weight": 9,
+        "Value": 13
+    },
+    {
+        "Weight": 23,
+        "Value": 23
+    },
+    {
+        "Weight": 20,
+        "Value": 27
+    },
+    {
+        "Weight": 12,
+        "Value": 35
+    },
+    {
+        "Weight": 6,
+        "Value": 8
+    },
+    {
+        "Weight": 6,
+        "Value": 15
+    },
+    {
+        "Weight": 27,
+        "Value": 20
+    },
+    {
+        "Weight": 24,
+        "Value": 23
+    },
+    {
+        "Weight": 9,
+        "Value": 23
+    },
+    {
+        "Weight": 34,
+        "Value": 29
+    },
+    {
+        "Weight": 9,
+        "Value": 23
+    },
+    {
+        "Weight": 29,
+        "Value": 16
+    },
+    {
+        "Weight": 33,
+        "Value": 13
+    },
+    {
+        "Weight": 23,
+        "Value": 25
+    },
+    {
+        "Weight": 7,
+        "Value": 9
+    },
+    {
+        "Weight": 8,
+        "Value": 29
+    },
+    {
+        "Weight": 19,
+        "Value": 26
+    },
+    {
+        "Weight": 7,
+        "Value": 27
+    },
+    {
+        "Weight": 15,
+        "Value": 20
+    },
+    {
+        "Weight": 19,
+        "Value": 22
+    },
+    {
+        "Weight": 36,
+        "Value": 18
+    },
+    {
+        "Weight": 31,
+        "Value": 21
+    },
+    {
+        "Weight": 10,
+        "Value": 10
+    },
+    {
+        "Weight": 36,
+        "Value": 37
+    },
+    {
+        "Weight": 35,
+        "Value": 27
+    },
+    {
+        "Weight": 23,
+        "Value": 35
+    },
+    {
+        "Weight": 27,
+        "Value": 18
+    },
+    {
+        "Weight": 6,
+        "Value": 13
+    },
+    {
+        "Weight": 30,
+        "Value": 24
+    },
+    {
+        "Weight": 17,
+        "Value": 35
+    },
+    {
+        "Weight": 27,
+        "Value": 34
+    },
+    {
+        "Weight": 27,
+        "Value": 33
+    },
+    {
+        "Weight": 25,
+        "Value": 8
+    },
+    {
+        "Weight": 25,
+        "Value": 22
+    },
+    {
+        "Weight": 14,
+        "Value": 22
+    },
+    {
+        "Weight": 17,
+        "Value": 26
+    },
+    {
+        "Weight": 8,
+        "Value": 16
+    },
+    {
+        "Weight": 13,
+        "Value": 20
+    },
+    {
+        "Weight": 23,
+        "Value": 32
+    },
+    {
+        "Weight": 21,
+        "Value": 36
+    },
+    {
+        "Weight": 13,
+        "Value": 33
+    },
+    {
+        "Weight": 16,
+        "Value": 10
+    },
+    {
+        "Weight": 9,
+        "Value": 32
+    },
+    {
+        "Weight": 34,
+        "Value": 17
+    },
+    {
+        "Weight": 28,
+        "Value": 26
+    },
+    {
+        "Weight": 24,
+        "Value": 8
+    },
+    {
+        "Weight": 12,
+        "Value": 11
+    },
+    {
+        "Weight": 37,
+        "Value": 33
+    },
+    {
+        "Weight": 31,
+        "Value": 32
+    },
+    {
+        "Weight": 27,
+        "Value": 6
+    },
+    {
+        "Weight": 17,
+        "Value": 7
+    },
+    {
+        "Weight": 25,
+        "Value": 19
+    },
+    {
+        "Weight": 30,
+        "Value": 6
+    },
+    {
+        "Weight": 13,
+        "Value": 6
+    },
+    {
+        "Weight": 15,
+        "Value": 6
+    },
+    {
+        "Weight": 10,
+        "Value": 23
+    },
+    {
+        "Weight": 16,
+        "Value": 26
+    },
+    {
+        "Weight": 26,
+        "Value": 35
+    },
+    {
+        "Weight": 23,
+        "Value": 27
+    },
+    {
+        "Weight": 30,
+        "Value": 25
+    },
+    {
+        "Weight": 27,
+        "Value": 16
+    },
+    {
+        "Weight": 16,
+        "Value": 35
+    },
+    {
+        "Weight": 7,
+        "Value": 15
+    },
+    {
+        "Weight": 20,
+        "Value": 27
+    },
+    {
+        "Weight": 28,
+        "Value": 36
+    },
+    {
+        "Weight": 30,
+        "Value": 17
+    },
+    {
+        "Weight": 12,
+        "Value": 23
+    },
+    {
+        "Weight": 15,
+        "Value": 12
+    },
+    {
+        "Weight": 36,
+        "Value": 29
+    },
+    {
+        "Weight": 19,
+        "Value": 12
+    },
+    {
+        "Weight": 33,
+        "Value": 34
+    },
+    {
+        "Weight": 21,
+        "Value": 24
+    },
+    {
+        "Weight": 25,
+        "Value": 9
+    },
+    {
+        "Weight": 9,
+        "Value": 34
+    },
+    {
+        "Weight": 36,
+        "Value": 37
+    },
+    {
+        "Weight": 27,
+        "Value": 25
+    },
+    {
+        "Weight": 31,
+        "Value": 6
+    },
+    {
+        "Weight": 28,
+        "Value": 13
+    },
+    {
+        "Weight": 28,
+        "Value": 14
+    },
+    {
+        "Weight": 26,
+        "Value": 33
+    },
+    {
+        "Weight": 27,
+        "Value": 20
+    },
+    {
+        "Weight": 26,
+        "Value": 34
+    },
+    {
+        "Weight": 16,
+        "Value": 30
+    },
+    {
+        "Weight": 11,
+        "Value": 12
+    },
+    {
+        "Weight": 24,
+        "Value": 25
+    },
+    {
+        "Weight": 12,
+        "Value": 13
+    },
+    {
+        "Weight": 34,
+        "Value": 16
+    },
+    {
+        "Weight": 11,
+        "Value": 24
+    },
+    {
+        "Weight": 21,
+        "Value": 35
+    },
+    {
+        "Weight": 37,
+        "Value": 27
+    },
+    {
+        "Weight": 23,
+        "Value": 31
+    },
+    {
+        "Weight": 9,
+        "Value": 11
+    },
+    {
+        "Weight": 30,
+        "Value": 29
+    },
+    {
+        "Weight": 30,
+        "Value": 31
+    },
+    {
+        "Weight": 10,
+        "Value": 7
+    },
+    {
+        "Weight": 37,
+        "Value": 19
+    },
+    {
+        "Weight": 12,
+        "Value": 7
+    },
+    {
+        "Weight": 16,
+        "Value": 35
+    },
+    {
+        "Weight": 19,
+        "Value": 23
+    },
+    {
+        "Weight": 29,
+        "Value": 19
+    },
+    {
+        "Weight": 34,
+        "Value": 18
+    },
+    {
+        "Weight": 6,
+        "Value": 9
+    },
+    {
+        "Weight": 30,
+        "Value": 27
+    },
+    {
+        "Weight": 23,
+        "Value": 23
+    },
+    {
+        "Weight": 33,
+        "Value": 35
+    },
+    {
+        "Weight": 36,
+        "Value": 34
+    },
+    {
+        "Weight": 35,
+        "Value": 10
+    },
+    {
+        "Weight": 28,
+        "Value": 26
+    },
+    {
+        "Weight": 14,
+        "Value": 27
+    },
+    {
+        "Weight": 19,
+        "Value": 21
+    },
+    {
+        "Weight": 34,
+        "Value": 15
+    },
+    {
+        "Weight": 29,
+        "Value": 13
+    },
+    {
+        "Weight": 12,
+        "Value": 33
+    },
+    {
+        "Weight": 35,
+        "Value": 14
+    },
+    {
+        "Weight": 21,
+        "Value": 14
+    },
+    {
+        "Weight": 36,
+        "Value": 19
+    },
+    {
+        "Weight": 25,
+        "Value": 26
+    },
+    {
+        "Weight": 23,
+        "Value": 33
+    },
+    {
+        "Weight": 15,
+        "Value": 17
+    },
+    {
+        "Weight": 7,
+        "Value": 9
+    },
+    {
+        "Weight": 25,
+        "Value": 6
+    },
+    {
+        "Weight": 14,
+        "Value": 31
+    },
+    {
+        "Weight": 14,
+        "Value": 22
+    },
+    {
+        "Weight": 27,
+        "Value": 34
+    },
+    {
+        "Weight": 29,
+        "Value": 31
+    },
+    {
+        "Weight": 31,
+        "Value": 23
+    },
+    {
+        "Weight": 35,
+        "Value": 9
+    },
+    {
+        "Weight": 10,
+        "Value": 35
+    },
+    {
+        "Weight": 26,
+        "Value": 31
+    },
+    {
+        "Weight": 34,
+        "Value": 25
+    },
+    {
+        "Weight": 29,
+        "Value": 24
+    },
+    {
+        "Weight": 21,
+        "Value": 25
+    },
+    {
+        "Weight": 6,
+        "Value": 12
+    },
+    {
+        "Weight": 19,
+        "Value": 6
+    },
+    {
+        "Weight": 30,
+        "Value": 17
+    },
+    {
+        "Weight": 20,
+        "Value": 26
+    },
+    {
+        "Weight": 32,
+        "Value": 21
+    },
+    {
+        "Weight": 31,
+        "Value": 23
+    },
+    {
+        "Weight": 19,
+        "Value": 16
+    },
+    {
+        "Weight": 19,
+        "Value": 27
+    },
+    {
+        "Weight": 11,
+        "Value": 13
+    },
+    {
+        "Weight": 20,
+        "Value": 19
+    },
+    {
+        "Weight": 14,
+        "Value": 22
+    },
+    {
+        "Weight": 29,
+        "Value": 7
+    },
+    {
+        "Weight": 35,
+        "Value": 21
+    },
+    {
+        "Weight": 34,
+        "Value": 34
+    },
+    {
+        "Weight": 20,
+        "Value": 16
+    },
+    {
+        "Weight": 27,
+        "Value": 11
+    },
+    {
+        "Weight": 20,
+        "Value": 14
+    },
+    {
+        "Weight": 37,
+        "Value": 16
+    },
+    {
+        "Weight": 19,
+        "Value": 32
+    },
+    {
+        "Weight": 36,
+        "Value": 17
+    },
+    {
+        "Weight": 31,
+        "Value": 22
+    },
+    {
+        "Weight": 10,
+        "Value": 21
+    },
+    {
+        "Weight": 12,
+        "Value": 21
+    },
+    {
+        "Weight": 22,
+        "Value": 36
+    },
+    {
+        "Weight": 23,
+        "Value": 14
+    },
+    {
+        "Weight": 21,
+        "Value": 15
+    },
+    {
+        "Weight": 11,
+        "Value": 15
+    },
+    {
+        "Weight": 9,
+        "Value": 23
+    },
+    {
+        "Weight": 30,
+        "Value": 22
+    },
+    {
+        "Weight": 23,
+        "Value": 24
+    },
+    {
+        "Weight": 31,
+        "Value": 29
+    },
+    {
+        "Weight": 37,
+        "Value": 9
+    },
+    {
+        "Weight": 7,
+        "Value": 15
+    },
+    {
+        "Weight": 9,
+        "Value": 28
+    },
+    {
+        "Weight": 16,
+        "Value": 33
+    },
+    {
+        "Weight": 12,
+        "Value": 28
+    },
+    {
+        "Weight": 7,
+        "Value": 17
+    },
+    {
+        "Weight": 33,
+        "Value": 25
+    },
+    {
+        "Weight": 35,
+        "Value": 20
+    },
+    {
+        "Weight": 17,
+        "Value": 36
+    },
+    {
+        "Weight": 25,
+        "Value": 14
+    },
+    {
+        "Weight": 30,
+        "Value": 13
+    },
+    {
+        "Weight": 25,
+        "Value": 6
+    },
+    {
+        "Weight": 15,
+        "Value": 34
+    },
+    {
+        "Weight": 8,
+        "Value": 32
+    },
+    {
+        "Weight": 25,
+        "Value": 19
+    },
+    {
+        "Weight": 10,
+        "Value": 6
+    },
+    {
+        "Weight": 34,
+        "Value": 11
+    },
+    {
+        "Weight": 20,
+        "Value": 32
+    },
+    {
+        "Weight": 7,
+        "Value": 37
+    },
+    {
+        "Weight": 30,
+        "Value": 23
+    },
+    {
+        "Weight": 10,
+        "Value": 33
+    },
+    {
+        "Weight": 33,
+        "Value": 25
+    },
+    {
+        "Weight": 19,
+        "Value": 24
+    },
+    {
+        "Weight": 8,
+        "Value": 10
+    },
+    {
+        "Weight": 24,
+        "Value": 8
+    },
+    {
+        "Weight": 29,
+        "Value": 22
+    },
+    {
+        "Weight": 25,
+        "Value": 25
+    },
+    {
+        "Weight": 9,
+        "Value": 26
+    },
+    {
+        "Weight": 32,
+        "Value": 19
+    },
+    {
+        "Weight": 17,
+        "Value": 8
+    },
+    {
+        "Weight": 7,
+        "Value": 8
+    },
+    {
+        "Weight": 14,
+        "Value": 36
+    },
+    {
+        "Weight": 7,
+        "Value": 19
+    },
+    {
+        "Weight": 15,
+        "Value": 11
+    },
+    {
+        "Weight": 11,
+        "Value": 16
+    },
+    {
+        "Weight": 34,
+        "Value": 10
+    },
+    {
+        "Weight": 33,
+        "Value": 35
+    },
+    {
+        "Weight": 7,
+        "Value": 17
+    },
+    {
+        "Weight": 16,
+        "Value": 20
+    },
+    {
+        "Weight": 24,
+        "Value": 8
+    },
+    {
+        "Weight": 26,
+        "Value": 22
+    },
+    {
+        "Weight": 21,
+        "Value": 24
+    },
+    {
+        "Weight": 29,
+        "Value": 12
+    },
+    {
+        "Weight": 31,
+        "Value": 20
+    },
+    {
+        "Weight": 22,
+        "Value": 21
+    },
+    {
+        "Weight": 16,
+        "Value": 33
+    },
+    {
+        "Weight": 34,
+        "Value": 7
+    },
+    {
+        "Weight": 9,
+        "Value": 11
+    },
+    {
+        "Weight": 20,
+        "Value": 11
+    },
+    {
+        "Weight": 21,
+        "Value": 19
+    },
+    {
+        "Weight": 13,
+        "Value": 33
+    },
+    {
+        "Weight": 18,
+        "Value": 20
+    },
+    {
+        "Weight": 34,
+        "Value": 13
+    },
+    {
+        "Weight": 37,
+        "Value": 32
+    },
+    {
+        "Weight": 19,
+        "Value": 21
+    },
+    {
+        "Weight": 8,
+        "Value": 23
+    },
+    {
+        "Weight": 11,
+        "Value": 11
+    },
+    {
+        "Weight": 34,
+        "Value": 20
+    },
+    {
+        "Weight": 32,
+        "Value": 22
+    },
+    {
+        "Weight": 35,
+        "Value": 9
+    },
+    {
+        "Weight": 18,
+        "Value": 18
+    },
+    {
+        "Weight": 14,
+        "Value": 8
+    },
+    {
+        "Weight": 19,
+        "Value": 31
+    },
+    {
+        "Weight": 20,
+        "Value": 7
+    },
+    {
+        "Weight": 28,
+        "Value": 35
+    },
+    {
+        "Weight": 12,
+        "Value": 30
+    },
+    {
+        "Weight": 33,
+        "Value": 16
+    },
+    {
+        "Weight": 25,
+        "Value": 16
+    },
+    {
+        "Weight": 19,
+        "Value": 26
+    },
+    {
+        "Weight": 6,
+        "Value": 35
+    },
+    {
+        "Weight": 11,
+        "Value": 30
+    },
+    {
+        "Weight": 24,
+        "Value": 22
+    },
+    {
+        "Weight": 30,
+        "Value": 24
+    },
+    {
+        "Weight": 33,
+        "Value": 26
+    },
+    {
+        "Weight": 19,
+        "Value": 15
+    },
+    {
+        "Weight": 28,
+        "Value": 16
+    },
+    {
+        "Weight": 37,
+        "Value": 22
+    },
+    {
+        "Weight": 17,
+        "Value": 26
+    },
+    {
+        "Weight": 7,
+        "Value": 17
+    },
+    {
+        "Weight": 18,
+        "Value": 12
+    },
+    {
+        "Weight": 19,
+        "Value": 16
+    },
+    {
+        "Weight": 6,
+        "Value": 17
+    },
+    {
+        "Weight": 12,
+        "Value": 6
+    },
+    {
+        "Weight": 8,
+        "Value": 11
+    },
+    {
+        "Weight": 17,
+        "Value": 7
+    },
+    {
+        "Weight": 9,
+        "Value": 10
+    },
+    {
+        "Weight": 32,
+        "Value": 13
+    },
+    {
+        "Weight": 11,
+        "Value": 18
+    },
+    {
+        "Weight": 34,
+        "Value": 26
+    },
+    {
+        "Weight": 19,
+        "Value": 19
+    },
+    {
+        "Weight": 15,
+        "Value": 8
+    },
+    {
+        "Weight": 19,
+        "Value": 30
+    },
+    {
+        "Weight": 24,
+        "Value": 9
+    },
+    {
+        "Weight": 34,
+        "Value": 33
+    },
+    {
+        "Weight": 29,
+        "Value": 32
+    },
+    {
+        "Weight": 20,
+        "Value": 12
+    },
+    {
+        "Weight": 19,
+        "Value": 8
+    },
+    {
+        "Weight": 22,
+        "Value": 36
+    },
+    {
+        "Weight": 14,
+        "Value": 31
+    },
+    {
+        "Weight": 21,
+        "Value": 18
+    },
+    {
+        "Weight": 27,
+        "Value": 32
+    },
+    {
+        "Weight": 35,
+        "Value": 18
+    },
+    {
+        "Weight": 8,
+        "Value": 6
+    },
+    {
+        "Weight": 23,
+        "Value": 12
+    },
+    {
+        "Weight": 31,
+        "Value": 21
+    },
+    {
+        "Weight": 35,
+        "Value": 25
+    },
+    {
+        "Weight": 13,
+        "Value": 22
+    },
+    {
+        "Weight": 19,
+        "Value": 16
+    },
+    {
+        "Weight": 31,
+        "Value": 32
+    },
+    {
+        "Weight": 26,
+        "Value": 6
+    },
+    {
+        "Weight": 10,
+        "Value": 32
+    },
+    {
+        "Weight": 26,
+        "Value": 34
+    },
+    {
+        "Weight": 37,
+        "Value": 28
+    },
+    {
+        "Weight": 20,
+        "Value": 31
+    },
+    {
+        "Weight": 16,
+        "Value": 33
+    },
+    {
+        "Weight": 28,
+        "Value": 13
+    },
+    {
+        "Weight": 6,
+        "Value": 14
+    },
+    {
+        "Weight": 23,
+        "Value": 27
+    },
+    {
+        "Weight": 23,
+        "Value": 23
+    },
+    {
+        "Weight": 10,
+        "Value": 12
+    },
+    {
+        "Weight": 11,
+        "Value": 8
+    },
+    {
+        "Weight": 17,
+        "Value": 26
+    },
+    {
+        "Weight": 11,
+        "Value": 35
+    },
+    {
+        "Weight": 31,
+        "Value": 8
+    },
+    {
+        "Weight": 31,
+        "Value": 8
+    },
+    {
+        "Weight": 32,
+        "Value": 20
+    },
+    {
+        "Weight": 6,
+        "Value": 20
+    },
+    {
+        "Weight": 29,
+        "Value": 35
+    },
+    {
+        "Weight": 10,
+        "Value": 22
+    },
+    {
+        "Weight": 22,
+        "Value": 12
+    },
+    {
+        "Weight": 16,
+        "Value": 10
+    },
+    {
+        "Weight": 36,
+        "Value": 26
+    },
+    {
+        "Weight": 8,
+        "Value": 27
+    },
+    {
+        "Weight": 35,
+        "Value": 32
+    },
+    {
+        "Weight": 12,
+        "Value": 26
+    },
+    {
+        "Weight": 27,
+        "Value": 30
+    },
+    {
+        "Weight": 32,
+        "Value": 17
+    },
+    {
+        "Weight": 33,
+        "Value": 36
+    },
+    {
+        "Weight": 11,
+        "Value": 21
+    },
+    {
+        "Weight": 30,
+        "Value": 21
+    },
+    {
+        "Weight": 28,
+        "Value": 26
+    },
+    {
+        "Weight": 17,
+        "Value": 9
+    },
+    {
+        "Weight": 9,
+        "Value": 12
+    },
+    {
+        "Weight": 23,
+        "Value": 36
+    },
+    {
+        "Weight": 35,
+        "Value": 9
+    },
+    {
+        "Weight": 8,
+        "Value": 34
+    },
+    {
+        "Weight": 8,
+        "Value": 18
+    },
+    {
+        "Weight": 17,
+        "Value": 23
+    },
+    {
+        "Weight": 19,
+        "Value": 24
+    },
+    {
+        "Weight": 36,
+        "Value": 37
+    },
+    {
+        "Weight": 12,
+        "Value": 11
+    },
+    {
+        "Weight": 21,
+        "Value": 32
+    },
+    {
+        "Weight": 20,
+        "Value": 15
+    },
+    {
+        "Weight": 7,
+        "Value": 32
+    },
+    {
+        "Weight": 35,
+        "Value": 8
+    },
+    {
+        "Weight": 17,
+        "Value": 25
+    },
+    {
+        "Weight": 17,
+        "Value": 22
+    },
+    {
+        "Weight": 22,
+        "Value": 24
+    },
+    {
+        "Weight": 34,
+        "Value": 14
+    },
+    {
+        "Weight": 33,
+        "Value": 21
+    },
+    {
+        "Weight": 23,
+        "Value": 12
+    },
+    {
+        "Weight": 13,
+        "Value": 11
+    },
+    {
+        "Weight": 19,
+        "Value": 31
+    },
+    {
+        "Weight": 25,
+        "Value": 14
+    },
+    {
+        "Weight": 14,
+        "Value": 13
+    },
+    {
+        "Weight": 14,
+        "Value": 19
+    },
+    {
+        "Weight": 17,
+        "Value": 31
+    },
+    {
+        "Weight": 8,
+        "Value": 26
+    },
+    {
+        "Weight": 6,
+        "Value": 26
+    },
+    {
+        "Weight": 17,
+        "Value": 15
+    },
+    {
+        "Weight": 36,
+        "Value": 33
+    },
+    {
+        "Weight": 27,
+        "Value": 29
+    },
+    {
+        "Weight": 24,
+        "Value": 34
+    },
+    {
+        "Weight": 9,
+        "Value": 14
+    },
+    {
+        "Weight": 6,
+        "Value": 7
+    },
+    {
+        "Weight": 15,
+        "Value": 34
+    },
+    {
+        "Weight": 36,
+        "Value": 28
+    },
+    {
+        "Weight": 37,
+        "Value": 6
+    },
+    {
+        "Weight": 8,
+        "Value": 30
+    },
+    {
+        "Weight": 12,
+        "Value": 11
+    },
+    {
+        "Weight": 29,
+        "Value": 36
+    },
+    {
+        "Weight": 28,
+        "Value": 25
+    },
+    {
+        "Weight": 31,
+        "Value": 26
+    },
+    {
+        "Weight": 15,
+        "Value": 6
+    },
+    {
+        "Weight": 8,
+        "Value": 12
+    },
+    {
+        "Weight": 17,
+        "Value": 12
+    },
+    {
+        "Weight": 15,
+        "Value": 15
+    },
+    {
+        "Weight": 18,
+        "Value": 14
+    },
+    {
+        "Weight": 14,
+        "Value": 12
+    },
+    {
+        "Weight": 29,
+        "Value": 27
+    },
+    {
+        "Weight": 29,
+        "Value": 35
+    },
+    {
+        "Weight": 13,
+        "Value": 7
+    },
+    {
+        "Weight": 25,
+        "Value": 15
+    },
+    {
+        "Weight": 10,
+        "Value": 9
+    },
+    {
+        "Weight": 7,
+        "Value": 34
+    },
+    {
+        "Weight": 28,
+        "Value": 12
+    },
+    {
+        "Weight": 32,
+        "Value": 12
+    },
+    {
+        "Weight": 19,
+        "Value": 24
+    },
+    {
+        "Weight": 30,
+        "Value": 21
+    },
+    {
+        "Weight": 6,
+        "Value": 13
+    },
+    {
+        "Weight": 26,
+        "Value": 30
+    },
+    {
+        "Weight": 16,
+        "Value": 8
+    },
+    {
+        "Weight": 33,
+        "Value": 9
+    },
+    {
+        "Weight": 11,
+        "Value": 32
+    },
+    {
+        "Weight": 25,
+        "Value": 31
+    },
+    {
+        "Weight": 6,
+        "Value": 19
+    },
+    {
+        "Weight": 11,
+        "Value": 22
+    },
+    {
+        "Weight": 19,
+        "Value": 10
+    },
+    {
+        "Weight": 14,
+        "Value": 7
+    },
+    {
+        "Weight": 18,
+        "Value": 19
+    },
+    {
+        "Weight": 35,
+        "Value": 20
+    },
+    {
+        "Weight": 6,
+        "Value": 6
+    },
+    {
+        "Weight": 23,
+        "Value": 9
+    },
+    {
+        "Weight": 20,
+        "Value": 32
+    },
+    {
+        "Weight": 20,
+        "Value": 34
+    },
+    {
+        "Weight": 33,
+        "Value": 26
+    },
+    {
+        "Weight": 19,
+        "Value": 7
+    },
+    {
+        "Weight": 20,
+        "Value": 27
+    },
+    {
+        "Weight": 27,
+        "Value": 10
+    },
+    {
+        "Weight": 28,
+        "Value": 26
+    },
+    {
+        "Weight": 21,
+        "Value": 7
+    },
+    {
+        "Weight": 36,
+        "Value": 35
+    },
+    {
+        "Weight": 14,
+        "Value": 10
+    },
+    {
+        "Weight": 9,
+        "Value": 20
+    },
+    {
+        "Weight": 16,
+        "Value": 9
+    },
+    {
+        "Weight": 21,
+        "Value": 18
+    },
+    {
+        "Weight": 16,
+        "Value": 12
+    },
+    {
+        "Weight": 25,
+        "Value": 24
+    },
+    {
+        "Weight": 19,
+        "Value": 33
+    },
+    {
+        "Weight": 31,
+        "Value": 24
+    },
+    {
+        "Weight": 18,
+        "Value": 29
+    },
+    {
+        "Weight": 32,
+        "Value": 8
+    },
+    {
+        "Weight": 26,
+        "Value": 7
+    },
+    {
+        "Weight": 12,
+        "Value": 28
+    },
+    {
+        "Weight": 14,
+        "Value": 35
+    },
+    {
+        "Weight": 33,
+        "Value": 25
+    },
+    {
+        "Weight": 31,
+        "Value": 29
+    },
+    {
+        "Weight": 32,
+        "Value": 10
+    },
+    {
+        "Weight": 22,
+        "Value": 20
+    },
+    {
+        "Weight": 25,
+        "Value": 31
+    },
+    {
+        "Weight": 36,
+        "Value": 8
+    },
+    {
+        "Weight": 30,
+        "Value": 35
+    },
+    {
+        "Weight": 12,
+        "Value": 8
+    },
+    {
+        "Weight": 36,
+        "Value": 26
+    },
+    {
+        "Weight": 20,
+        "Value": 23
+    },
+    {
+        "Weight": 34,
+        "Value": 25
+    },
+    {
+        "Weight": 23,
+        "Value": 28
+    },
+    {
+        "Weight": 24,
+        "Value": 10
+    },
+    {
+        "Weight": 20,
+        "Value": 37
+    },
+    {
+        "Weight": 36,
+        "Value": 34
+    },
+    {
+        "Weight": 36,
+        "Value": 11
+    },
+    {
+        "Weight": 20,
+        "Value": 37
+    },
+    {
+        "Weight": 12,
+        "Value": 14
+    },
+    {
+        "Weight": 22,
+        "Value": 9
+    },
+    {
+        "Weight": 21,
+        "Value": 8
+    },
+    {
+        "Weight": 37,
+        "Value": 26
+    },
+    {
+        "Weight": 15,
+        "Value": 6
+    },
+    {
+        "Weight": 28,
+        "Value": 13
+    },
+    {
+        "Weight": 26,
+        "Value": 32
+    },
+    {
+        "Weight": 37,
+        "Value": 7
+    },
+    {
+        "Weight": 28,
+        "Value": 13
+    },
+    {
+        "Weight": 10,
+        "Value": 17
+    },
+    {
+        "Weight": 32,
+        "Value": 22
+    },
+    {
+        "Weight": 29,
+        "Value": 33
+    },
+    {
+        "Weight": 36,
+        "Value": 9
+    },
+    {
+        "Weight": 37,
+        "Value": 15
+    },
+    {
+        "Weight": 18,
+        "Value": 10
+    },
+    {
+        "Weight": 16,
+        "Value": 37
+    },
+    {
+        "Weight": 18,
+        "Value": 27
+    },
+    {
+        "Weight": 14,
+        "Value": 6
+    },
+    {
+        "Weight": 29,
+        "Value": 33
+    },
+    {
+        "Weight": 20,
+        "Value": 29
+    },
+    {
+        "Weight": 22,
+        "Value": 14
+    },
+    {
+        "Weight": 35,
+        "Value": 20
+    },
+    {
+        "Weight": 36,
+        "Value": 34
+    },
+    {
+        "Weight": 37,
+        "Value": 6
+    },
+    {
+        "Weight": 25,
+        "Value": 8
+    },
+    {
+        "Weight": 22,
+        "Value": 9
+    },
+    {
+        "Weight": 11,
+        "Value": 12
+    },
+    {
+        "Weight": 32,
+        "Value": 27
+    },
+    {
+        "Weight": 30,
+        "Value": 13
+    },
+    {
+        "Weight": 31,
+        "Value": 11
+    },
+    {
+        "Weight": 22,
+        "Value": 20
+    },
+    {
+        "Weight": 31,
+        "Value": 29
+    },
+    {
+        "Weight": 22,
+        "Value": 23
+    },
+    {
+        "Weight": 37,
+        "Value": 37
+    },
+    {
+        "Weight": 31,
+        "Value": 16
+    },
+    {
+        "Weight": 36,
+        "Value": 28
+    },
+    {
+        "Weight": 27,
+        "Value": 28
+    },
+    {
+        "Weight": 25,
+        "Value": 19
+    },
+    {
+        "Weight": 17,
+        "Value": 9
+    },
+    {
+        "Weight": 18,
+        "Value": 24
+    },
+    {
+        "Weight": 13,
+        "Value": 18
+    },
+    {
+        "Weight": 28,
+        "Value": 15
+    },
+    {
+        "Weight": 37,
+        "Value": 36
+    },
+    {
+        "Weight": 31,
+        "Value": 30
+    },
+    {
+        "Weight": 21,
+        "Value": 8
+    },
+    {
+        "Weight": 30,
+        "Value": 23
+    },
+    {
+        "Weight": 24,
+        "Value": 31
+    },
+    {
+        "Weight": 18,
+        "Value": 11
+    },
+    {
+        "Weight": 35,
+        "Value": 28
+    },
+    {
+        "Weight": 15,
+        "Value": 31
+    },
+    {
+        "Weight": 26,
+        "Value": 12
+    },
+    {
+        "Weight": 20,
+        "Value": 26
+    },
+    {
+        "Weight": 33,
+        "Value": 11
+    },
+    {
+        "Weight": 13,
+        "Value": 21
+    },
+    {
+        "Weight": 13,
+        "Value": 8
+    },
+    {
+        "Weight": 29,
+        "Value": 14
+    },
+    {
+        "Weight": 35,
+        "Value": 35
+    },
+    {
+        "Weight": 19,
+        "Value": 12
+    },
+    {
+        "Weight": 32,
+        "Value": 18
+    },
+    {
+        "Weight": 25,
+        "Value": 14
+    },
+    {
+        "Weight": 11,
+        "Value": 26
+    },
+    {
+        "Weight": 17,
+        "Value": 27
+    },
+    {
+        "Weight": 6,
+        "Value": 20
+    },
+    {
+        "Weight": 9,
+        "Value": 22
+    },
+    {
+        "Weight": 32,
+        "Value": 6
+    },
+    {
+        "Weight": 7,
+        "Value": 9
+    },
+    {
+        "Weight": 27,
+        "Value": 33
+    },
+    {
+        "Weight": 19,
+        "Value": 29
+    },
+    {
+        "Weight": 8,
+        "Value": 7
+    },
+    {
+        "Weight": 6,
+        "Value": 28
+    },
+    {
+        "Weight": 34,
+        "Value": 14
+    },
+    {
+        "Weight": 31,
+        "Value": 6
+    },
+    {
+        "Weight": 32,
+        "Value": 21
+    },
+    {
+        "Weight": 7,
+        "Value": 20
+    },
+    {
+        "Weight": 27,
+        "Value": 21
+    },
+    {
+        "Weight": 37,
+        "Value": 16
+    },
+    {
+        "Weight": 14,
+        "Value": 30
+    },
+    {
+        "Weight": 13,
+        "Value": 28
+    },
+    {
+        "Weight": 21,
+        "Value": 19
+    },
+    {
+        "Weight": 18,
+        "Value": 9
+    },
+    {
+        "Weight": 24,
+        "Value": 16
+    },
+    {
+        "Weight": 20,
+        "Value": 24
+    },
+    {
+        "Weight": 7,
+        "Value": 32
+    },
+    {
+        "Weight": 26,
+        "Value": 23
+    },
+    {
+        "Weight": 6,
+        "Value": 32
+    },
+    {
+        "Weight": 36,
+        "Value": 14
+    },
+    {
+        "Weight": 29,
+        "Value": 8
+    },
+    {
+        "Weight": 31,
+        "Value": 22
+    },
+    {
+        "Weight": 22,
+        "Value": 12
+    },
+    {
+        "Weight": 17,
+        "Value": 8
+    },
+    {
+        "Weight": 17,
+        "Value": 36
+    },
+    {
+        "Weight": 20,
+        "Value": 34
+    },
+    {
+        "Weight": 17,
+        "Value": 12
+    },
+    {
+        "Weight": 7,
+        "Value": 21
+    },
+    {
+        "Weight": 31,
+        "Value": 29
+    },
+    {
+        "Weight": 21,
+        "Value": 20
+    },
+    {
+        "Weight": 16,
+        "Value": 22
+    },
+    {
+        "Weight": 9,
+        "Value": 32
+    },
+    {
+        "Weight": 36,
+        "Value": 9
+    },
+    {
+        "Weight": 34,
+        "Value": 8
+    },
+    {
+        "Weight": 19,
+        "Value": 35
+    },
+    {
+        "Weight": 31,
+        "Value": 22
+    },
+    {
+        "Weight": 23,
+        "Value": 29
+    },
+    {
+        "Weight": 25,
+        "Value": 7
+    },
+    {
+        "Weight": 18,
+        "Value": 28
+    },
+    {
+        "Weight": 17,
+        "Value": 35
+    },
+    {
+        "Weight": 32,
+        "Value": 20
+    },
+    {
+        "Weight": 37,
+        "Value": 37
+    },
+    {
+        "Weight": 22,
+        "Value": 12
+    },
+    {
+        "Weight": 9,
+        "Value": 9
+    },
+    {
+        "Weight": 26,
+        "Value": 29
+    },
+    {
+        "Weight": 18,
+        "Value": 16
+    },
+    {
+        "Weight": 11,
+        "Value": 10
+    },
+    {
+        "Weight": 22,
+        "Value": 12
+    },
+    {
+        "Weight": 12,
+        "Value": 37
+    },
+    {
+        "Weight": 32,
+        "Value": 21
+    },
+    {
+        "Weight": 17,
+        "Value": 14
+    },
+    {
+        "Weight": 29,
+        "Value": 16
+    },
+    {
+        "Weight": 36,
+        "Value": 33
+    },
+    {
+        "Weight": 15,
+        "Value": 20
+    },
+    {
+        "Weight": 10,
+        "Value": 28
+    },
+    {
+        "Weight": 11,
+        "Value": 10
+    },
+    {
+        "Weight": 21,
+        "Value": 6
+    },
+    {
+        "Weight": 27,
+        "Value": 33
+    },
+    {
+        "Weight": 20,
+        "Value": 34
+    },
+    {
+        "Weight": 21,
+        "Value": 16
+    },
+    {
+        "Weight": 26,
+        "Value": 10
+    },
+    {
+        "Weight": 26,
+        "Value": 9
+    },
+    {
+        "Weight": 7,
+        "Value": 11
+    },
+    {
+        "Weight": 26,
+        "Value": 20
+    },
+    {
+        "Weight": 11,
+        "Value": 28
+    },
+    {
+        "Weight": 7,
+        "Value": 19
+    },
+    {
+        "Weight": 17,
+        "Value": 14
+    },
+    {
+        "Weight": 8,
+        "Value": 6
+    },
+    {
+        "Weight": 7,
+        "Value": 14
+    },
+    {
+        "Weight": 13,
+        "Value": 33
+    },
+    {
+        "Weight": 21,
+        "Value": 21
+    },
+    {
+        "Weight": 31,
+        "Value": 9
+    },
+    {
+        "Weight": 6,
+        "Value": 14
+    },
+    {
+        "Weight": 33,
+        "Value": 13
+    },
+    {
+        "Weight": 24,
+        "Value": 16
+    },
+    {
+        "Weight": 35,
+        "Value": 28
+    },
+    {
+        "Weight": 25,
+        "Value": 24
+    },
+    {
+        "Weight": 24,
+        "Value": 17
+    },
+    {
+        "Weight": 17,
+        "Value": 6
+    },
+    {
+        "Weight": 7,
+        "Value": 18
+    },
+    {
+        "Weight": 28,
+        "Value": 34
+    },
+    {
+        "Weight": 22,
+        "Value": 15
+    },
+    {
+        "Weight": 22,
+        "Value": 13
+    },
+    {
+        "Weight": 6,
+        "Value": 32
+    },
+    {
+        "Weight": 19,
+        "Value": 34
+    },
+    {
+        "Weight": 28,
+        "Value": 21
+    },
+    {
+        "Weight": 10,
+        "Value": 17
+    },
+    {
+        "Weight": 26,
+        "Value": 9
+    },
+    {
+        "Weight": 11,
+        "Value": 30
+    },
+    {
+        "Weight": 27,
+        "Value": 34
+    },
+    {
+        "Weight": 29,
+        "Value": 19
+    },
+    {
+        "Weight": 21,
+        "Value": 10
+    },
+    {
+        "Weight": 34,
+        "Value": 6
+    },
+    {
+        "Weight": 25,
+        "Value": 12
+    },
+    {
+        "Weight": 24,
+        "Value": 9
+    },
+    {
+        "Weight": 29,
+        "Value": 24
+    },
+    {
+        "Weight": 22,
+        "Value": 8
+    },
+    {
+        "Weight": 17,
+        "Value": 35
+    },
+    {
+        "Weight": 34,
+        "Value": 30
+    },
+    {
+        "Weight": 13,
+        "Value": 11
+    },
+    {
+        "Weight": 11,
+        "Value": 21
+    },
+    {
+        "Weight": 34,
+        "Value": 19
+    }
+]

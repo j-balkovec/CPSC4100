@@ -46,6 +46,9 @@ SIZE_MAP: dict = {
     'xlarge': 1000000
 }
 
+# 10 Random Capacities
+CAPACITY_SIZE = 10
+
 def create_data_file_name(size: str, type: str) -> str:
     """Generates a data file name based on the specified size and type.
 
@@ -56,6 +59,9 @@ def create_data_file_name(size: str, type: str) -> str:
     Returns:
         str: The formatted file name.
     """
+    if type == CAPACITY:
+        return f"{type}data_{datetime.datetime.now().strftime('%d_%m_%Y')}.json"
+    
     return f"{type}{size}data_{datetime.datetime.now().strftime('%d_%m_%Y')}.json"
 
 
@@ -77,7 +83,7 @@ def create_items_data(size: str) -> list:
 
 
 
-def create_capacity_data(size: str) -> list:
+def create_capacity_data(size: int = CAPACITY_SIZE) -> list:
     """Creates a list of dictionaries representing capacities with random values.
 
     Args:
@@ -88,7 +94,7 @@ def create_capacity_data(size: str) -> list:
     """
     return [
         {"Capacity": random.randint(LOWER_BOUND_CAPACITY, UPPER_BOUND_CAPACITY)}
-        for _ in range(SIZE_MAP[size])
+        for _ in range(size)
     ]
 
 
@@ -111,7 +117,7 @@ def create_data_file(size: str, data: list, type: str) -> str:
     
     if type not in valid_types:
         raise ValueError(f"[Invalid type: {type}. Valid types are {ITEMS} and {CAPACITY}]")
-
+        
     directory: str = os.path.join('data', valid_types[type])
     os.makedirs(directory, exist_ok=True)
     
@@ -199,7 +205,6 @@ def run_data_factory() -> None:
 
     for size in SIZE_MAP.keys():
         items_data = create_items_data(size)
-        capacity_data = create_capacity_data(size)
         
         result = create_data_file(size, items_data, ITEMS)
         if result:
@@ -207,11 +212,15 @@ def run_data_factory() -> None:
         else:
             unsuccessful_files.append(f"items{size}data")
 
-        result = create_data_file(size, capacity_data, CAPACITY)
-        if result:
-            successful_files.append(result)
-        else:
-            unsuccessful_files.append(f"capacity{size}data")
+
+    capacity_data = create_capacity_data()
+    result = create_data_file(size, capacity_data, CAPACITY)
+    
+    if result:
+        successful_files.append(result)
+    else:
+        unsuccessful_files.append(f"capacity{size}data")
+        
 
     print("\n*** [Successfully created data files] ***")
     for file in successful_files:
@@ -234,8 +243,8 @@ def main() -> None:
     This function serves as the entry point for the script, orchestrating
     the deletion of old data files and the creation of new ones.
     """
-    # delete_all_data_files('data')
-    # run_data_factory()
+    delete_all_data_files('data')
+    run_data_factory()
   
 if __name__ == '__main__':
     main()

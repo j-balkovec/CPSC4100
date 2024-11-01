@@ -143,16 +143,12 @@ namespace KnapsackProject
     {
         public static readonly IReadOnlyDictionary<string, string> Paths = new Dictionary<string, string>
     {
-        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_29_10_2024.json" },
-        { "XSmallCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacityxsmalldata_29_10_2024.json" },
-        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_29_10_2024.json" },
-        { "SmallCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitysmalldata_29_10_2024.json" },
-        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_29_10_2024.json" },
-        { "MediumCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitymediumdata_29_10_2024.json" },
-        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_29_10_2024.json" },
-        { "LargeCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitylargedata_29_10_2024.json" },
-        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_29_10_2024.json" },
-        { "XLargeCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacityxlargedata_29_10_2024.json" },
+        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_01_11_2024.json" },
+        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_01_11_2024.json" },
+        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_01_11_2024.json" },
+        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_01_11_2024.json" },
+        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_01_11_2024.json" },
+        { "Capacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_01_11_2024.json"}
     };
     }
 
@@ -332,6 +328,7 @@ namespace KnapsackProject
         /// <param name="filePath">The path to the JSON file.</param>
         /// <returns>A list of items of type <typeparamref name="T"/> or null if an error occurs.</returns>
         /// <remarks>
+        /// - Function does the error handling
         /// Expected JSON format:
         /// <list type="bullet">
         ///     <item><description>For KnapsackItem: { "Weight": value, "Value": value }</description></item>
@@ -340,18 +337,31 @@ namespace KnapsackProject
         /// </remarks>
         public static List<T>? ReadItemsFromJsonFile<T>(string filePath)
         {
-            string jsonContent = File.ReadAllText(filePath);
             try
             {
+                string jsonContent = File.ReadAllText(filePath);
+                //Console.WriteLine(jsonContent);
+                //Console.ReadLine();
                 return JsonSerializer.Deserialize<List<T>>(jsonContent);
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"Error: The file '{filePath}' was not found.");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Console.WriteLine($"Error: Access to the file '{filePath}' is denied.");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"IO Error: {ex.Message}");
             }
             catch (JsonException ex)
             {
                 Console.WriteLine($"JSON Parsing Error: {ex.Message}");
-                return null;
             }
-            
-        }
+            return null;
+        }   
 
         /// <summary>
         /// Prints the details of a list of Knapsack items to the console.
@@ -431,7 +441,7 @@ namespace KnapsackProject
             Stopwatch stopwatch = new Stopwatch();
 
             const string? ItemsFile = "XSmallItems";
-            const string? CapacityFile = "XSmallCapacity";
+            const string? CapacityFile = "Capacity";
             
             logger.Info("COLLECTING DATA...\n");
 
