@@ -28,9 +28,20 @@
 /// - System (for Console output)
 /// </dependencies>
 
+
+/// START TODO
+/// * Fix capacity problem
+/// * Recursive solution extra slow sometimes
+/// * Remove Print functions
+/// * Add Heursitics
+/// * Analyze data in R
+/// END TODO
+
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text.Json;
+using System.Collections.Generic;
 
 namespace KnapsackProject
 {
@@ -58,7 +69,7 @@ namespace KnapsackProject
 
             using (StreamWriter writer = new StreamWriter(LogFilePath, true))
             {
-                writer.WriteLine("*** [TIME STAMP]: " + DateTime.Now.ToString("yyyy-MM-dd HH:mm") + "} ***\n\n");
+                writer.WriteLine("*** [TIME STAMP]: " + DateTime.Now.ToString("yyyy-MM-dd") + "} ***\n\n");
             }
         }
 
@@ -70,7 +81,7 @@ namespace KnapsackProject
         {
             using (StreamWriter writer = new StreamWriter(LogFilePath, true))
             {
-                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [INFO]: {message}\n");
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [INFO]: {message}");
             }
         }
 
@@ -82,7 +93,7 @@ namespace KnapsackProject
         {
             using (StreamWriter writer = new StreamWriter(LogFilePath, true))
             {
-                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [ERROR]: {message}\n");
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [ERROR]: {message}");
             }
         }
 
@@ -94,7 +105,7 @@ namespace KnapsackProject
         {
             using (StreamWriter writer = new StreamWriter(LogFilePath, true))
             {
-                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [TIME]: {time}\n");
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [TIME]: {time}");
             }
         }
 
@@ -106,7 +117,7 @@ namespace KnapsackProject
         {
             using (StreamWriter writer = new StreamWriter(LogFilePath, true))
             {
-                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [SOLUTION]: {solution}\n");
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [SOLUTION]: {solution}");
             }
         }
 
@@ -125,6 +136,24 @@ namespace KnapsackProject
         {
             using (StreamWriter writer = new StreamWriter(LogFilePath, false)) { }
         }
+    }
+
+    //DOCUMENT
+    public static class FilePaths
+    {
+        public static readonly IReadOnlyDictionary<string, string> Paths = new Dictionary<string, string>
+    {
+        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_29_10_2024.json" },
+        { "XSmallCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacityxsmalldata_29_10_2024.json" },
+        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_29_10_2024.json" },
+        { "SmallCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitysmalldata_29_10_2024.json" },
+        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_29_10_2024.json" },
+        { "MediumCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitymediumdata_29_10_2024.json" },
+        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_29_10_2024.json" },
+        { "LargeCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitylargedata_29_10_2024.json" },
+        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_29_10_2024.json" },
+        { "XLargeCapacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacityxlargedata_29_10_2024.json" },
+    };
     }
 
     /// <summary>
@@ -152,45 +181,48 @@ namespace KnapsackProject
         }
     }
 
+    /// <summary>
+    /// Represents an item with a specified capacity.
+    /// </summary>
+    public class CapacityItem
+    {
+        public uint Capacity { get; set; }
+    }
+
     class Knapsack
     {
+
         /// <summary>
-        /// Recursive Solution O(2^n)
+        /// Recurisve solution O(2^n)
         /// </summary>
-        /// 
-        /// <param name="items">The list of items to choose from.</param>
+        /// <param name="items">A list of <see cref="KnapsackItem"/> representing the items to choose from.</param>
         /// <param name="capacity">The maximum weight capacity of the knapsack.</param>
-        /// <param name="n">The number of items available.</param>
-        /// 
-        /// <returns>
-        /// - The maximum value that can be obtained within the given capacity.
-        /// </returns>
-        /// 
-        /// <invariant>
-        /// - Weights & Values will contain negative intigers (uint only)
-        /// - For any call KnapsackRecursive(weights, values, capacity, n), the method will return the 
-        ///   maximum possible value using the first n items within the given capacity.
-        /// </invariant>
-        public static uint KnapsackRecursive(List<KnapsackItem> items, uint capacity, uint n)
+        /// <returns>The maximum value that can be obtained within the given weight capacity.</returns>
+        public static uint KnapsackRecursive(List<KnapsackItem> items, uint capacity)
+        {
+            return KnapsackRecursiveHelper(items, capacity, items.Count);
+        }
+
+        /// <summary>
+        /// Helper method for the <see cref="KnapsackRecursive"/> function to facilitate recursion.
+        /// </summary>
+        /// <param name="items">A list of <see cref="KnapsackItem"/> representing the items to choose from.</param>
+        /// <param name="capacity">The remaining weight capacity of the knapsack.</param>
+        /// <param name="n">The number of items currently considered.</param>
+        /// <returns>The maximum value that can be obtained for the given remaining capacity and items.</returns>
+        private static uint KnapsackRecursiveHelper(List<KnapsackItem> items, uint capacity, int n)
         {
             // Base case: no items or no capacity
-            if (n == 0 || capacity == 0)
-            {
-                return 0;
-            }
+            if (n == 0 || capacity == 0) { return 0; }
 
-            // If the weight of the nth item is more than the capacity, skip it
-            if (items[(int)(n - 1)].Weight > capacity)
+            if (items[n - 1].Weight > capacity)
             {
-                return KnapsackRecursive(items, capacity, n - 1);
+                return KnapsackRecursiveHelper(items, capacity, n - 1);
             }
             else
             {
-                // Include the item and find the value for remaining capacity
-                uint includeItem = items[(int)(n - 1)].Value + KnapsackRecursive(items, capacity - items[(int)(n - 1)].Weight, n - 1);
-                // Exclude the item
-                uint excludeItem = KnapsackRecursive(items, capacity, n - 1);
-                // Return the maximum value of including or excluding the item
+                uint includeItem = items[n - 1].Value + KnapsackRecursiveHelper(items, capacity - items[n - 1].Weight, n - 1);
+                uint excludeItem = KnapsackRecursiveHelper(items, capacity, n - 1);
                 return Math.Max(includeItem, excludeItem);
             }
         }
@@ -243,7 +275,7 @@ namespace KnapsackProject
         /// <param name="capacity">The maximum weight capacity of the knapsack.</param>
         /// <param name="items">The list of items to choose from.</param>
         /// <returns>The maximum value that can be obtained within the given capacity.</returns>
-        public uint SolveKnapsack(uint capacity, List<KnapsackItem> items)
+        public static uint KnapsackMemo(List<KnapsackItem> items, uint capacity)
         {
             return SolveKnapsackHelper(items, capacity, 0);
         }
@@ -251,7 +283,7 @@ namespace KnapsackProject
         /// <summary>
         /// A dictionary to store previously calculated results for memoization.
         /// </summary>
-        private readonly Dictionary<(uint, uint), uint> memo = new();
+        private static readonly Dictionary<(uint, uint), uint> memo = new();
 
         /// <summary>
         /// A helper method that uses recursion and memoization to find the maximum value for the given items.
@@ -267,7 +299,7 @@ namespace KnapsackProject
         /// <remark>
         /// - Have to index the list with a cast to (int), since List<T> cannot be indexed with an unsigned intiger
         /// </remark>
-        private uint SolveKnapsackHelper(List<KnapsackItem> items, uint remainingCapacity, uint currentIndex)
+        private static uint SolveKnapsackHelper(List<KnapsackItem> items, uint remainingCapacity, uint currentIndex)
         {
             if (currentIndex >= (uint)items.Count || remainingCapacity <= 0)
                 return 0;
@@ -291,6 +323,105 @@ namespace KnapsackProject
         }
 
         /// <summary>
+        /// Reads a list of items of type <typeparamref name="T"/> from a JSON file.
+        /// </summary>
+        /// 
+        /// <typeparam name="T">
+        /// * The type of items to read from the JSON file.
+        /// </typeparam>
+        /// <param name="filePath">The path to the JSON file.</param>
+        /// <returns>A list of items of type <typeparamref name="T"/> or null if an error occurs.</returns>
+        /// <remarks>
+        /// Expected JSON format:
+        /// <list type="bullet">
+        ///     <item><description>For KnapsackItem: { "Weight": value, "Value": value }</description></item>
+        ///     <item><description>For CapacityItem: { "Capacity": value }</description></item>
+        /// </list>
+        /// </remarks>
+        public static List<T>? ReadItemsFromJsonFile<T>(string filePath)
+        {
+            string jsonContent = File.ReadAllText(filePath);
+            try
+            {
+                return JsonSerializer.Deserialize<List<T>>(jsonContent);
+            }
+            catch (JsonException ex)
+            {
+                Console.WriteLine($"JSON Parsing Error: {ex.Message}");
+                return null;
+            }
+            
+        }
+
+        /// <summary>
+        /// Prints the details of a list of Knapsack items to the console.
+        /// </summary>
+        /// <param name="items">A list of <see cref="KnapsackItem"/> objects to print. Can be null or empty.</param>
+        /// <exception cref="ArgumentException">Thrown when the items list is null or empty.</exception>
+        public static void PrintItems(List<KnapsackItem>? items)
+        {
+            try
+            {
+                if (items == null || items.Count == 0)
+                {
+                    throw new ArgumentException("** [NO DATA] **");
+                }
+
+                Console.WriteLine("Knapsack Items:");
+                foreach (var item in items)
+                {
+                    Console.WriteLine($"Weight: {item.Weight}, Value: {item.Value}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message); // No need to log error --> Testing Purposes Only!
+            }
+   
+        }
+
+        /// <summary>
+        /// Prints the capacities from a list of <see cref="CapacityItem"/> objects to the console.
+        /// </summary>
+        /// <param name="capacities">A list of <see cref="CapacityItem"/> objects to print. Can be null or empty.</param>
+        /// <exception cref="ArgumentException">Thrown when the capacities list is null or empty.</exception>
+        public static void PrintCapacities(List<CapacityItem>? capacities)
+        {
+            try
+            {
+                if (capacities == null || capacities.Count == 0)
+                {
+                    throw new ArgumentException("** [NO DATA] **");
+                }
+
+                Console.WriteLine("Capacities:");
+                foreach (var element in capacities)
+                {
+                    Console.WriteLine($"Capacity: {element.Capacity}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message); // No need to log error --> Testing Purposes Only!
+            }
+
+        }
+
+        /// <summary>
+        /// Picks a random <see cref="CapacityItem"/> from the provided list.
+        /// </summary>
+        /// <param name="capacities">A list of <see cref="CapacityItem"/> from which to select a random item.</param>
+        /// <returns>A randomly selected <see cref="CapacityItem"/>, or null if the list is null or empty.</returns>
+        public static CapacityItem? YieldRandomCapacity(List<CapacityItem>? capacities)
+        {
+            if (capacities == null || capacities.Count == 0) { return null; }
+
+            Random random = new Random(); 
+            int randomIndex = random.Next(capacities.Count); 
+            return capacities[randomIndex];
+        }
+
+        /// <summary>
         /// The entry point of the application. Initializes the logger, measures the execution time of the 
         /// knapsack algorithm, logs the results.
         /// </summary>
@@ -299,19 +430,68 @@ namespace KnapsackProject
             var logger = new Logger();
             Stopwatch stopwatch = new Stopwatch();
 
-            logger.Info("TESTING");
+            const string? ItemsFile = "XSmallItems";
+            const string? CapacityFile = "XSmallCapacity";
+            
+            logger.Info("COLLECTING DATA...\n");
 
+            List<KnapsackItem>? items = ReadItemsFromJsonFile<KnapsackItem>(FilePaths.Paths[ItemsFile]);
+            List<CapacityItem>? capacities = ReadItemsFromJsonFile<CapacityItem>(FilePaths.Paths[CapacityFile]);
+            Knapsack KnapsackSolver = new();
+            CapacityItem? RandomCapacity = YieldRandomCapacity(capacities);
+            uint UnpackedCapacity = RandomCapacity.Capacity;
+
+
+            // ****** RECURSIVE ******
+            logger.Info($"Method: Recursive");
             stopwatch.Reset();
             stopwatch.Start();
 
-            // knapsack call
-            uint solution = 0;
+            uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
 
             stopwatch.Stop();
-            decimal exec_time = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-            logger.Time(exec_time);
 
-            logger.Solution(solution);
+            decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+            logger.Time(ExecTimeRecursive);
+            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
+            logger.Solution(SolutionRecursive);
+            // ****** RECURSIVE ******
+
+            // ****** DP ******
+            logger.Info("\n");
+            logger.Info($"Method: DP");
+            stopwatch.Reset();
+            stopwatch.Start();
+
+            uint SolutionDP = KnapsackDP(items, UnpackedCapacity);
+
+            stopwatch.Stop();
+
+            decimal ExecTimeDP = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+            logger.Time(ExecTimeDP);
+            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
+            logger.Solution(SolutionDP);
+            // ****** DP ******
+
+            // ****** MEMO ******
+            logger.Info("\n");
+            logger.Info($"Method: Memo");
+            stopwatch.Reset();
+            stopwatch.Start();
+
+            uint SolutionMemo = KnapsackMemo(items, UnpackedCapacity);
+
+            stopwatch.Stop();
+
+            decimal ExecTimeMemo = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+            logger.Time(ExecTimeMemo);
+            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
+            logger.Solution(SolutionMemo);
+            // ****** MEMO ******
+
         }
     }
 
