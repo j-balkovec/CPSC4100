@@ -472,18 +472,31 @@ namespace KnapsackProject
                 uint UnpackedCapacity = RandomCapacity.Capacity;
 
                 // ****** RECURSIVE ******
-                //logger.Info($"Method: Recursive");
-                //stopwatch.Reset();
-                //stopwatch.Start();
+                if(itemKey != "XLargeItems" &&
+                   itemKey != "LargeItems"  &&
+                   itemKey != "MediumItems")
+                {
+                    logger.Info($"Method: Recursive");
+                    stopwatch.Reset();
+                    stopwatch.Start();
 
-                //uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
+                    uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
 
-                //stopwatch.Stop();
-                //decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+                    stopwatch.Stop();
+                    decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
 
-                //logger.Time(ExecTimeRecursive);
-                //logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
-                //logger.Solution(SolutionRecursive);
+                    logger.Time(ExecTimeRecursive);
+                    logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
+                    logger.Solution(SolutionRecursive);
+                }
+                else
+                {
+                    logger.Info($"Method: Recursive");
+                    logger.Time(-1);
+                    logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
+                    logger.Solution(0);
+                    logger.Info("Time limit exceeded");
+                }
                 // ****** RECURSIVE ******
 
                 // ****** DP ******
@@ -529,7 +542,14 @@ namespace KnapsackProject
         public static void Main()
         {
             var logger = new Logger();
-            CollectData(logger);
+
+            for(int i = 0; i < 5; i++)
+            {
+                CollectData(logger);
+            }
+
+            Console.WriteLine("**** [DONE] ****");
+            Console.ReadLine();
         }
     }
 
