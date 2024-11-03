@@ -117,7 +117,7 @@ namespace KnapsackProject
         {
             using (StreamWriter writer = new StreamWriter(LogFilePath, true))
             {
-                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [SOLUTION]: {solution}");
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [SOLUTION]: {solution}\n");
             }
         }
 
@@ -143,12 +143,12 @@ namespace KnapsackProject
     {
         public static readonly IReadOnlyDictionary<string, string> Paths = new Dictionary<string, string>
     {
-        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_01_11_2024.json" },
-        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_01_11_2024.json" },
-        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_01_11_2024.json" },
-        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_01_11_2024.json" },
-        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_01_11_2024.json" },
-        { "Capacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_01_11_2024.json"}
+        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_02_11_2024.json" },
+        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_02_11_2024.json" },
+        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_02_11_2024.json" },
+        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_02_11_2024.json" },
+        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_02_11_2024.json" },
+        { "Capacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_02_11_2024.json"}
     };
     }
 
@@ -164,7 +164,6 @@ namespace KnapsackProject
         ///</item>
         public uint Weight { get; }
         public uint Value { get; }
-        public double ValuePerWeight => (double)Value / Weight;
 
         /// <summary>
         /// Initializes a new instance of the KnapsackItem class.
@@ -268,6 +267,11 @@ namespace KnapsackProject
         }
 
         /// <summary>
+        /// A dictionary to store previously calculated results for memoization.
+        /// </summary>
+        private static readonly Dictionary<(uint, uint), uint> memo = new();
+
+        /// <summary>
         /// Dynammic programming solution using memoization O(n * W); W = capacity, n = number of items
         /// </summary>
         /// <param name="capacity">The maximum weight capacity of the knapsack.</param>
@@ -278,11 +282,6 @@ namespace KnapsackProject
             memo.Clear(); //Clear cache
             return SolveKnapsackHelper(items, capacity, 0);
         }
-
-        /// <summary>
-        /// A dictionary to store previously calculated results for memoization.
-        /// </summary>
-        private static readonly Dictionary<(uint, uint), uint> memo = new();
 
         /// <summary>
         /// A helper method that uses recursion and memoization to find the maximum value for the given items.
@@ -306,12 +305,14 @@ namespace KnapsackProject
             var key = (remainingCapacity, currentIndex);
 
             if (memo.ContainsKey(key)) {
-                Console.WriteLine($"Cache hit for key: {key}");
+                // DEBUG
+                //Console.WriteLine($"Cache hit for key: {key}");
                 return memo[key];
             }
             else
             {
-                Console.WriteLine($"Cache miss for key: {key}");
+                // DEBUG
+                //Console.WriteLine($"Cache miss for key: {key}");
             }
 
             uint maxValueWithoutCurrent = SolveKnapsackHelper(items, remainingCapacity, currentIndex + 1);
@@ -327,26 +328,6 @@ namespace KnapsackProject
             uint result = Math.Max(maxValueWithoutCurrent, maxValueWithCurrent);
             memo[key] = result;
             return result;
-        }
-
-
-        public static uint PrimalLPSelectionHeuristic(List<KnapsackItem> items, uint capacity)
-        {
-            List<KnapsackItem>? SortedItems = items.OrderByDescending(item => item.ValuePerWeight).ToList();
-            uint Result = 0;
-            uint remainingCapacity = capacity;
-
-            foreach (var item in SortedItems)
-            {
-                if (item.Weight <= remainingCapacity)
-                {
-                    Result += item.Value;
-                    remainingCapacity -= item.Weight;
-                }
-                else { break; }
-            }
-
-            return Result;
         }
 
         /// <summary>
@@ -463,92 +444,92 @@ namespace KnapsackProject
         }
 
         /// <summary>
+        /// Collects data by running the knapsack algorithms on various item sets and a random capacity.
+        /// Logs the execution time and solution for each method (Recursive, DP, Memo).
+        /// </summary>
+        /// <param name="logger">An instance of the <see cref="Logger"/> class used for logging information.</param>
+        /// 
+        /// <remark>
+        /// - Still in the works
+        /// </remark>
+        public static void CollectData(Logger logger)
+        {
+            Stopwatch stopwatch = new Stopwatch();            
+            const string CapacityFile = "Capacity";
+
+            logger.Info("COLLECTING DATA...\n");
+            uint TestNumber = 1;
+
+            foreach (var itemKey in FilePaths.Paths.Keys.Where(k => k != CapacityFile))
+            {
+
+                logger.Info($" *** [TEST #{TestNumber}] *** \n");
+                List<KnapsackItem>? items = ReadItemsFromJsonFile<KnapsackItem>(FilePaths.Paths[itemKey]);
+                List<CapacityItem>? capacities = ReadItemsFromJsonFile<CapacityItem>(FilePaths.Paths[CapacityFile]);
+
+                // Assuming you have a method to randomly select a capacity item
+                CapacityItem? RandomCapacity = YieldRandomCapacity(capacities);
+                uint UnpackedCapacity = RandomCapacity.Capacity;
+
+                // ****** RECURSIVE ******
+                //logger.Info($"Method: Recursive");
+                //stopwatch.Reset();
+                //stopwatch.Start();
+
+                //uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
+
+                //stopwatch.Stop();
+                //decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+                //logger.Time(ExecTimeRecursive);
+                //logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
+                //logger.Solution(SolutionRecursive);
+                // ****** RECURSIVE ******
+
+                // ****** DP ******
+                logger.Info("Method: DP");
+                stopwatch.Reset();
+                stopwatch.Start();
+
+                uint SolutionDP = KnapsackDP(items, UnpackedCapacity);
+
+                stopwatch.Stop();
+                decimal ExecTimeDP = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+                logger.Time(ExecTimeDP);
+                logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
+                logger.Solution(SolutionDP);
+                // ****** DP ******
+
+                // ****** MEMO ******
+                logger.Info("Method: Memo");
+                stopwatch.Reset();
+                stopwatch.Start();
+
+                uint SolutionMemo = KnapsackMemo(items, UnpackedCapacity);
+
+                stopwatch.Stop();
+                decimal ExecTimeMemo = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+
+                logger.Time(ExecTimeMemo);
+                logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
+                logger.Solution(SolutionMemo);
+                // ****** MEMO ******
+
+                logger.Info("\n" + new string('-', 40) + "\n");
+                TestNumber++;
+            }
+        }
+        
+
+        /// <summary>
         /// The entry point of the application. Initializes the logger, measures the execution time of the 
         /// knapsack algorithm, logs the results.
         /// </summary>
         public static void Main()
         {
             var logger = new Logger();
-            Stopwatch stopwatch = new Stopwatch();
-
-            const string? ItemsFile = "LargeItems";
-            const string? CapacityFile = "Capacity";
-            
-            logger.Info("COLLECTING DATA...\n");
-
-            List<KnapsackItem>? items = ReadItemsFromJsonFile<KnapsackItem>(FilePaths.Paths[ItemsFile]);
-            List<CapacityItem>? capacities = ReadItemsFromJsonFile<CapacityItem>(FilePaths.Paths[CapacityFile]);
-            Knapsack KnapsackSolver = new();
-            CapacityItem? RandomCapacity = YieldRandomCapacity(capacities);
-            uint UnpackedCapacity = RandomCapacity.Capacity;
-
-
-            // ****** RECURSIVE ******
-            //logger.Info($"Method: Recursive");
-            //stopwatch.Reset();
-            //stopwatch.Start();
-
-            //uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
-
-            //stopwatch.Stop();
-
-            //decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-
-            //logger.Time(ExecTimeRecursive);
-            //logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
-            //logger.Solution(SolutionRecursive);
-            // ****** RECURSIVE ******
-
-            // ****** DP ******
-            logger.Info("\n");
-            logger.Info($"Method: DP");
-            stopwatch.Reset();
-            stopwatch.Start();
-
-            uint SolutionDP = KnapsackDP(items, UnpackedCapacity);
-
-            stopwatch.Stop();
-
-            decimal ExecTimeDP = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-
-            logger.Time(ExecTimeDP);
-            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
-            logger.Solution(SolutionDP);
-            // ****** DP ******
-
-            // ****** MEMO ******
-            logger.Info("\n");
-            logger.Info($"Method: Memo");
-            stopwatch.Reset();
-            stopwatch.Start();
-
-            uint SolutionMemo = KnapsackMemo(items, UnpackedCapacity);
-
-            stopwatch.Stop();
-
-            decimal ExecTimeMemo = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-
-            logger.Time(ExecTimeMemo);
-            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
-            logger.Solution(SolutionMemo);
-            // ****** MEMO ******
-
-            // ****** LP Heuristic ******
-            logger.Info($"Method: LP Heuristic");
-            stopwatch.Reset();
-            stopwatch.Start();
-
-            uint SolutionLP = PrimalLPSelectionHeuristic(items, UnpackedCapacity);
-
-            stopwatch.Stop();
-
-            decimal ExecTimeLP = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-
-            logger.Time(ExecTimeLP);
-            logger.Info($"FOR: [ITEMS]: {ItemsFile}, [CAPACITY]: {CapacityFile}");
-            logger.Solution(SolutionLP);
-            // ****** LP ******
-
+            CollectData(logger);
         }
     }
 

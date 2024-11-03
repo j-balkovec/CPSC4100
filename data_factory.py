@@ -30,8 +30,8 @@ import os
 LOWER_BOUND_ITEMS: int = 6
 UPPER_BOUND_ITEMS: int = 37
 
-LOWER_BOUND_CAPACITY: int = 15
-UPPER_BOUND_CAPACITY: int = 87
+LOWER_BOUND_CAPACITY: int = 22
+UPPER_BOUND_CAPACITY: int = 120
 
 BREAK: str = '\n\n'
   
@@ -39,11 +39,11 @@ ITEMS: str = 'items'
 CAPACITY: str = 'capacity'
 
 SIZE_MAP: dict = {
-    'xsmall': 100,
-    'small': 1000,
-    'medium': 10000,
-    'large': 100000,
-    'xlarge': 1000000
+    'xsmall': 50,
+    'small': 100,
+    'medium': 250,
+    'large': 500,
+    'xlarge': 1000
 }
 
 # 10 Random Capacities
