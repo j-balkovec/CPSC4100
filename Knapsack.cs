@@ -143,12 +143,12 @@ namespace KnapsackProject
     {
         public static readonly IReadOnlyDictionary<string, string> Paths = new Dictionary<string, string>
     {
-        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_02_11_2024.json" },
-        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_02_11_2024.json" },
-        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_02_11_2024.json" },
-        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_02_11_2024.json" },
-        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_02_11_2024.json" },
-        { "Capacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_02_11_2024.json"}
+        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_06_11_2024.json" },
+        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_06_11_2024.json" },
+        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_06_11_2024.json" },
+        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_06_11_2024.json" },
+        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_06_11_2024.json" },
+        { "Capacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_06_11_2024.json"}
     };
     }
 
@@ -444,96 +444,85 @@ namespace KnapsackProject
         }
 
         /// <summary>
-        /// Collects data by running the knapsack algorithms on various item sets and a random capacity.
-        /// Logs the execution time and solution for each method (Recursive, DP, Memo).
+        /// Collects data on the execution time of different knapsack algorithm methods (Recursive, DP, Memo)
+        /// and logs the results using the specified <see cref="Logger"/>.
         /// </summary>
-        /// <param name="logger">An instance of the <see cref="Logger"/> class used for logging information.</param>
-        /// 
-        /// <remark>
-        /// - Still in the works
-        /// </remark>
+        /// <param name="logger">The logger instance to record execution time, method details, and solutions.</param>
         public static void CollectData(Logger logger)
         {
-            Stopwatch stopwatch = new Stopwatch();            
+            // Initialize stopwatch and set capacity file path
+            Stopwatch stopwatch = new Stopwatch();
             const string CapacityFile = "Capacity";
+            uint testNumber = 1;
 
             logger.Info("COLLECTING DATA...\n");
-            uint TestNumber = 1;
 
-            foreach (var itemKey in FilePaths.Paths.Keys.Where(k => k != CapacityFile))
+            // Define methods for easier expansion and reduced repetition
+            var methods = new (string MethodName, Func<List<KnapsackItem>, uint, uint> Algorithm)[]
             {
+        ("Recursive", KnapsackRecursive),
+        ("DP", KnapsackDP),
+        ("Memo", KnapsackMemo)
+            };
 
-                logger.Info($" *** [TEST #{TestNumber}] *** \n");
-                List<KnapsackItem>? items = ReadItemsFromJsonFile<KnapsackItem>(FilePaths.Paths[itemKey]);
-                List<CapacityItem>? capacities = ReadItemsFromJsonFile<CapacityItem>(FilePaths.Paths[CapacityFile]);
-
-                // Assuming you have a method to randomly select a capacity item
-                CapacityItem? RandomCapacity = YieldRandomCapacity(capacities);
-                uint UnpackedCapacity = RandomCapacity.Capacity;
-
-                // ****** RECURSIVE ******
-                if(itemKey != "XLargeItems" &&
-                   itemKey != "LargeItems"  &&
-                   itemKey != "MediumItems")
+            // Run tests for each method and each item set
+            foreach (var method in methods)
+            {
+                foreach (var itemKey in FilePaths.Paths.Keys.Where(k => k != CapacityFile))
                 {
-                    logger.Info($"Method: Recursive");
+                    logger.Info($" *** [TEST #{testNumber}] *** \n");
+
+                    // Read item and capacity data
+                    List<KnapsackItem> items = ReadItemsFromJsonFile<KnapsackItem>(FilePaths.Paths[itemKey]);
+                    List<CapacityItem> capacities = ReadItemsFromJsonFile<CapacityItem>(FilePaths.Paths[CapacityFile]);
+
+                    // Get random capacity item
+                    CapacityItem randomCapacity = YieldRandomCapacity(capacities);
+                    uint unpackedCapacity = randomCapacity.Capacity;
+
+                    // Skip certain item sets for recursive method
+                    if (method.MethodName == "Recursive" && (itemKey == "XLargeItems" || itemKey == "LargeItems" || itemKey == "MediumItems"))
+                    {
+                        LogResults(logger, testNumber, method.MethodName, itemKey, unpackedCapacity, execTime: -1, solution: 0);
+                        testNumber++;
+                        continue;
+                    }
+
+                    // Measure execution time
                     stopwatch.Reset();
                     stopwatch.Start();
-
-                    uint SolutionRecursive = KnapsackRecursive(items, UnpackedCapacity);
-
+                    uint solution = method.Algorithm(items, unpackedCapacity);
                     stopwatch.Stop();
-                    decimal ExecTimeRecursive = (decimal)stopwatch.Elapsed.TotalMilliseconds;
+                    decimal execTime = (decimal)stopwatch.Elapsed.TotalMilliseconds;
 
-                    logger.Time(ExecTimeRecursive);
-                    logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
-                    logger.Solution(SolutionRecursive);
+                    // Log results
+                    LogResults(logger, testNumber, method.MethodName, itemKey, unpackedCapacity, execTime, solution);
+                    testNumber++;
                 }
-                else
-                {
-                    logger.Info($"Method: Recursive");
-                    logger.Time(-1);
-                    logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
-                    logger.Solution(0);
-                    logger.Info("Time limit exceeded");
-                }
-                // ****** RECURSIVE ******
-
-                // ****** DP ******
-                logger.Info("Method: DP");
-                stopwatch.Reset();
-                stopwatch.Start();
-
-                uint SolutionDP = KnapsackDP(items, UnpackedCapacity);
-
-                stopwatch.Stop();
-                decimal ExecTimeDP = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-
-                logger.Time(ExecTimeDP);
-                logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
-                logger.Solution(SolutionDP);
-                // ****** DP ******
-
-                // ****** MEMO ******
-                logger.Info("Method: Memo");
-                stopwatch.Reset();
-                stopwatch.Start();
-
-                uint SolutionMemo = KnapsackMemo(items, UnpackedCapacity);
-
-                stopwatch.Stop();
-                decimal ExecTimeMemo = (decimal)stopwatch.Elapsed.TotalMilliseconds;
-
-                logger.Time(ExecTimeMemo);
-                logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {UnpackedCapacity}");
-                logger.Solution(SolutionMemo);
-                // ****** MEMO ******
-
-                logger.Info("\n" + new string('-', 40) + "\n");
-                TestNumber++;
             }
         }
-        
+
+        /// <summary>
+        /// Logs the results of a knapsack algorithm test to the specified <see cref="Logger"/>.
+        /// </summary>
+        /// <param name="logger">The logger instance to record test details.</param>
+        /// <param name="testNumber">The unique test number for identification.</param>
+        /// <param name="method">The algorithm method name used in this test (e.g., "Recursive", "DP", "Memo").</param>
+        /// <param name="itemKey">The item category or file key (e.g., "SmallItems", "LargeItems") used in the test.</param>
+        /// <param name="capacity">The capacity value used in the knapsack problem for this test.</param>
+        /// <param name="execTime">The execution time in milliseconds, or -1 if the test was skipped.</param>
+        /// <param name="solution">The solution value returned by the algorithm, or 0 if the test was skipped.</param>
+        private static void LogResults(Logger logger, uint testNumber, string method, string itemKey, uint capacity, decimal execTime, uint solution)
+        {
+            logger.Info($" *** [TEST #{testNumber}] *** \n");
+            logger.Info($"Method: {method}");
+            logger.Time(execTime);
+            logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {capacity}");
+            logger.Solution(solution);
+            logger.Info("\n" + new string('-', 40) + "\n");
+        }
+
+
 
         /// <summary>
         /// The entry point of the application. Initializes the logger, measures the execution time of the 
@@ -542,8 +531,9 @@ namespace KnapsackProject
         public static void Main()
         {
             var logger = new Logger();
+            const uint NumTests = 5;
 
-            for(int i = 0; i < 5; i++)
+            for(int i = 0; i < NumTests; i++)
             {
                 CollectData(logger);
             }

@@ -47,7 +47,7 @@ SIZE_MAP: dict = {
 }
 
 # 10 Random Capacities
-CAPACITY_SIZE = 10
+CAPACITY_SIZE = 250
 
 def create_data_file_name(size: str, type: str) -> str:
     """Generates a data file name based on the specified size and type.
