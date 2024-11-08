@@ -1,0 +1,15 @@
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/bin/Release/net7.0/FinalProject4100
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/bin/Release/net7.0/FinalProject4100.deps.json
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/bin/Release/net7.0/FinalProject4100.runtimeconfig.json
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/bin/Release/net7.0/FinalProject4100.dll
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/bin/Release/net7.0/FinalProject4100.pdb
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.csproj.AssemblyReference.cache
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.AssemblyInfoInputs.cache
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.AssemblyInfo.cs
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.csproj.CoreCompileInputs.cache
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.dll
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/refint/FinalProject4100.dll
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.pdb
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/FinalProject4100.genruntimeconfig.cache
+/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/obj/Release/net7.0/ref/FinalProject4100.dll

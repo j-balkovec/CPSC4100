@@ -1,0 +1,344 @@
+---
+title: "FP_Analysis"
+author: "Jakob Balkovec"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# 0/1 Knapsack Problem
+## Data Analysis and Graph Generation
+
+### Reading the Data
+
+We read in the data from the Excel file, manipulate it slighty so it fits our requirements. We created tuples with 5 variables each, representing a single run, 150 runs total.
+
+```{r, echo=TRUE, results='hide'}
+# Read in the data
+suppressPackageStartupMessages(library(readxl))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(knitr))
+suppressPackageStartupMessages(library(kableExtra))
+suppressPackageStartupMessages(library(pander))
+
+file_name <- "Results.xlsx"
+sheet_name <- "Raw"
+
+data <- read_excel(file_name, sheet = sheet_name)
+
+# Tuples format:
+#
+# {(Run #, Time, Capacity, Solution, Size, Type)}
+#
+# Size: 150 Tuples, 6 variables each
+#
+tuples <- data %>%
+  select(Run, DP, CapacityDP, SolutionDP, Size) %>%
+  rename(Time = DP, Capacity = CapacityDP, Solution = SolutionDP) %>%
+  mutate(Type = "DP") %>%
+  bind_rows(
+    data %>%
+      select(Run, Memo, CapacityMemo, SolutionMemo, Size) %>%
+      rename(Time = Memo, Capacity = CapacityMemo, Solution = SolutionMemo) %>%
+      mutate(Type = "Memo"),
+    data %>%
+      select(Run, Recursive, CapacityRecursive, SolutionRecursive, Size) %>%
+      rename(Time = Recursive, Capacity = CapacityRecursive, Solution = SolutionRecursive) %>%
+      mutate(Type = "Recursive")
+  )
+
+tuples_clean_rec <- tuples %>% 
+  filter(Type == "Recursive", !is.na(Capacity), !is.infinite(Capacity), Capacity > 0)
+
+tuples_clean_DP <- tuples %>% 
+  filter(Type == "DP", !is.na(Capacity), !is.infinite(Capacity), Capacity > 0)
+
+tuples_clean_memo <- tuples %>% 
+  filter(Type == "Memo", !is.na(Capacity), !is.infinite(Capacity), Capacity > 0)
+
+combined_tuples <- bind_rows(tuples_clean_rec, tuples_clean_DP, tuples_clean_memo)
+```
+
+## Exploratory Analysis on the Dataset
+
+### Summary Statistics
+```{r, echo=TRUE, results='show'}
+
+custom_summary <- function(df) {
+  df %>%
+    summarise(
+      Min = min(Capacity, na.rm = TRUE),
+      Q1 = quantile(Capacity, 0.25, na.rm = TRUE),
+      Median = median(Capacity, na.rm = TRUE),
+      Mean = mean(Capacity, na.rm = TRUE),
+      Q3 = quantile(Capacity, 0.75, na.rm = TRUE),
+      Max = max(Capacity, na.rm = TRUE)
+    )
+}
+
+table <- function(tuples) {
+  kable(custom_summary(tuples), "html", caption = "Custom Summary of Recursive Tuples") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(1:6, width = "100px")
+}
+summary_rec <- as.data.frame(summary(tuples_clean_rec))
+summary_dp <- as.data.frame(summary(tuples_clean_DP))
+summary_memo <- as.data.frame(summary(tuples_clean_memo))
+
+table(tuples_clean_rec)
+table(tuples_clean_DP)
+table(tuples_clean_memo)
+```
+###  Distribution Analysis
+```{r, echo=TRUE, results='show'}
+tuples_clean_rec$Type <- "Recursive"
+tuples_clean_DP$Type <- "DP"
+tuples_clean_memo$Type <- "Memo"
+
+suppressWarnings(
+ggplot(combined_tuples, aes(x = Capacity, fill = Type)) +
+  geom_histogram(alpha = 0.6, bins = 30, position = "identity", aes(y = after_stat(density))) +  
+  geom_density(alpha = 0.3, color = "black", adjust = 1) +
+  facet_wrap(~ Type, scales = "free_y") + 
+  theme_minimal() +
+  labs(title = "Capacity Distribution by Algorithm Type", x = "Capacity", y = "Density") +
+  scale_x_continuous(limits = c(-500, 500), breaks = seq(-500, 500, by = 100)) +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(size = 6),  # Adjust the size of the x-axis ticks
+    axis.text.y = element_text(size = 6)   # Adjust the size of the y-axis ticks
+  )
+)
+```
+
+```{r, echo=TRUE, results='show'}
+# Boxplot for solution comparison
+ggplot(combined_tuples, aes(x = Type, y = Solution, fill = Type)) +
+  geom_boxplot() +  # Create the boxplot
+  theme_minimal() +
+  labs(title = "Solution Comparison by Algorithm Type", x = "Algorithm Type", y = "Solution") +
+  theme(legend.position = "none")
+```
+
+### Correlation Analysis
+```{r, echo=TRUE, results='show'}
+# Calculate correlations
+tuples %>%
+  group_by(Type) %>%
+  summarize(correlation = cor(Capacity, Solution, use = "complete.obs"))
+```
+
+### Comparing Algorithm Performance
+```{r, echo=TRUE, results='show'}
+ggplot(combined_tuples, aes(x = Type, y = Capacity, fill = Type)) +
+  stat_summary(fun = mean, geom = "bar", color = "black") + 
+  stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.2, color = "black") +
+  geom_jitter(color = "black", width = 0.2, alpha = 0.5) +
+  theme_minimal() +
+  labs(title = "Average Capacity by Algorithm Type with Data Points", 
+       x = "Algorithm Type", y = "Average Capacity") +
+  theme(plot.title = element_text(hjust = 0.5, size = 16), 
+        axis.text = element_text(size = 12),  
+        axis.title = element_text(size = 14))
+```
+
+```{r}
+ggplot(combined_tuples, aes(x = Type, y = Solution, fill = Type)) +
+  stat_summary(fun = mean, geom = "bar", color = "black") + 
+  stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.2, color = "black") +
+  geom_jitter(color = "black", width = 0.2, alpha = 0.5) +
+  theme_minimal() +
+  labs(title = "Average Solution by Algorithm Type with Data Points", 
+       x = "Algorithm Type", y = "Average Capacity") +
+  theme(plot.title = element_text(hjust = 0.5, size = 16), 
+        axis.text = element_text(size = 12),  
+        axis.title = element_text(size = 14))
+```
+
+### Performance by Problem Size
+```{r, echo=TRUE, results='show'}
+# From XS to XL, recursive fix
+ggplot(combined_tuples, aes(x = Size, y = Capacity, fill = Type)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Capacity by Problem Size and Algorithm Type", x = "Problem Size", y = "Capacity")
+```
+```{r}
+ggplot(combined_tuples, aes(x = Size, y = Solution, fill = Type)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Solution by Problem Size and Algorithm Type", x = "Problem Size", y = "Capacity")
+```
+
+### Outlier Detection
+```{r, echo=TRUE, results='show'}
+# Outliars in Execution time, better graph
+ggplot(combined_tuples, aes(x = Type, y = Time, fill=Type)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Outliers in Time by Algorithm Type", x = "Algorithm Type", y = "Time") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  facet_wrap(~ Type, scales = "free_y")
+```
+
+### Relationship Between Runtime and Solution Quality
+```{r, echo=TRUE, results='show'}
+# Plot for DP
+ggplot(tuples %>% filter(Type == "DP"), aes(x = Time, y = Solution)) +
+  geom_point(color = "tomato") +
+  theme_minimal() +
+  labs(title = "DP Runtime vs Solution Quality", x = "DP Runtime", y = "Solution Quality")
+```
+
+```{r, echo=TRUE, results='show'}
+# Plot for Memo
+ggplot(tuples %>% filter(Type == "Memo"), aes(x = Time, y = Solution)) +
+  geom_point(color = "springgreen3") +
+  theme_minimal() +
+  labs(title = "Memo Runtime vs Solution Quality", x = "Memo Runtime", y = "Solution Quality")
+```
+
+```{r, echo=TRUE, results='show'}
+# Plot for Recursive
+ggplot(tuples %>% filter(Type == "Recursive"), aes(x = Time, y = Solution)) +
+  geom_point(color = "royalblue2") +
+  theme_minimal() +
+  labs(title = "Recursive Runtime vs Solution Quality", x = "Recursive Runtime", y = "Solution Quality")
+```
+
+### Relationship Between Runtime and Solution Quality
+```{r, echo=TRUE, results='show'}
+# Plot for DP
+ggplot(tuples %>% filter(Type == "DP"), aes(x = Time, y = Capacity)) +
+  geom_point(color = "tomato") +
+  theme_minimal() +
+  labs(title = "DP Runtime vs Capacity", x = "DP Runtime", y = "Capacity")
+```
+
+```{r, echo=TRUE, results='show'}
+# Plot for Memo
+ggplot(tuples %>% filter(Type == "Memo"), aes(x = Time, y = Capacity)) +
+  geom_point(color = "springgreen3") +
+  theme_minimal() +
+  labs(title = "Memo Runtime vs Capacity", x = "Memo Runtime", y = "Capacity")
+```
+
+```{r, echo=TRUE, results='show'}
+# Plot for Recursive
+ggplot(tuples %>% filter(Type == "Recursive"), aes(x = Time, y = Capacity)) +
+  geom_point(color = "royalblue2") +
+  theme_minimal() +
+  labs(title = "Recursive Runtime vs Capacity", x = "Recursive Runtime", y = "Capacity")
+```
+
+### Relationships
+```{r, echo=TRUE, results='show'}
+
+# ----------- DP -----------
+# Relationship:
+#
+# Linear relationship between DP Execution Time and the Capacity
+# EQN: a * (Capacity) + b
+#
+lm_dp <- lm(Time ~ Capacity, data = tuples_clean_DP)
+
+intercept_dp <- coef(lm_dp)[1]
+slope_dp <- coef(lm_dp)[2]
+r_squared_dp <- summary(lm_dp)$r.squared
+
+reg_eq_dp <- paste("y = ", round(slope_dp, 5), " * Capacity - ", (-1) * round(intercept_dp, 2), 
+                     "\n", "R² = ", 1 - round(r_squared_dp, 3))
+
+ggplot(tuples %>% filter(Type == "DP"), aes(x = Capacity, y = Time)) +
+  geom_point(color = "tomato") +  
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, color = "brown") +  
+  theme_minimal() +
+  labs(title = "DP Runtime vs Capacity with Linear Regression", 
+       x = "Capacity", y = "DP Runtime") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  annotate("text", x = max(tuples_clean_DP$Capacity) * 0.5, 
+           y = max(tuples_clean_DP$Time) * 0.9,
+           label = reg_eq_dp, color = "black", size = 5, hjust = 0)
+# ----------- DP -----------
+```
+
+```{r, echo=TRUE, results='show'}
+# ---------- Memo ----------
+# Relationship:
+#
+# Linear relationship between Memo Execution Time and the Capacity
+# EQN: a * (Capacity) + b
+#
+lm_memo <- lm(Time ~ Capacity, data = tuples_clean_memo)
+
+intercept_memo <- coef(lm_memo)[1]
+slope_memo <- coef(lm_memo)[2]
+r_squared_memo <- summary(lm_memo)$r.squared
+
+reg_eq_memo <- paste("y = ", round(slope_memo, 2), " * Capacity + ", round(intercept_memo, 2), 
+                     "\n", "R² = ", 1 - round(r_squared_memo, 3))
+
+ggplot(tuples %>% filter(Type == "Memo"), aes(x = Capacity, y = Time)) +
+  geom_point(color = "springgreen3") +  # Plot the data points
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, color = "brown") + 
+  theme_minimal() +
+  labs(title = "Memo Runtime vs Capacity with Linear Regression", 
+       x = "Capacity", y = "Memo Runtime") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  annotate("text", x = max(tuples_clean_memo$Capacity) * 0.5, 
+           y = max(tuples_clean_memo$Time) * 0.9,
+           label = reg_eq_memo, color = "black", size = 5, hjust = 0)
+# ---------- Memo ----------
+```
+
+```{r, echo=TRUE, results='show'}
+# -------- Recursive -------
+# Relationship:
+#
+# Log relationship between Recursive Execution Time and the Capacity
+# EQN: a * log(Capacity) + b
+#
+log_model <- lm(Time ~ log(Capacity), data = tuples_clean_rec)
+
+intercept_rec <- coef(log_model)[1]
+slope_rec <- coef(log_model)[2]
+r_squared_rec <- summary(log_model)$r.squared
+
+reg_eq_rec <- paste("y = ", round(slope_rec, 2), " * log(Capacity)  - ", round(intercept_rec * (-1), 2), 
+                "\n", "R² = ", 1 - round(r_squared_rec, 3))
+
+ggplot(tuples_clean_rec, aes(x = Time, y = Capacity)) +
+  geom_point(color = "royalblue2") +  # Data points
+  geom_smooth(method = "lm", formula = y ~ log(x), se = FALSE, color = "brown", size = 0.5) +
+  theme_minimal() +
+  labs(title = "Recursive Runtime vs Capacity with Logarithmic Regression",
+       x = "Recursive Runtime", y = "Capacity") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  annotate("text", x = max(tuples_clean_rec$Time) * 0.5, y = max(tuples_clean_rec$Capacity) * 0.9,
+           label = reg_eq_rec, color = "black", size = 5, hjust = 0, vjust = 1)
+# -------- Recursive -------
+```
+
+### Summary Table
+```{r, echo=TRUE, results='show'}
+# Prettify
+
+tuples %>%
+  group_by(Type) %>%
+  summarise(
+    Mean_Capacity = mean(Capacity),
+    Median_Capacity = median(Capacity),
+    SD_Capacity = sd(Capacity),
+    Mean_Time = mean(Time),
+    Median_Time = median(Time),
+    SD_Time = sd(Time)
+  ) %>%
+  kable("html", caption = "Summary Statistics by Algorithm Type") %>%
+  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
+  column_spec(2:7, width = "100px")
+```
+
+***
+Jakob Balkovec, Seattle University, 2024
+
