@@ -8,7 +8,8 @@
 /// Revision History
 /// - [1.0] Recursive Solution Design, Debugging
 /// - [2.0] DP Solution Implementation, Initial Documentation
-/// - [3.0] Performance Measurement and Heuristic Implementation (TBD)
+/// - [3.0] Performance Measurement and Heuristic Implementation
+/// - [4.0] ADD TODO
 /// </version>
 /// 
 /// <summary>
@@ -28,32 +29,30 @@
 /// - System (for Console output)
 /// </dependencies>
 
-
-/// START TODO
-/// * Fix capacity problem
-/// * Recursive solution extra slow sometimes
-/// * Remove Print functions
-/// * Add Heursitics
-/// * Analyze data in R
-/// END TODO
-
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace KnapsackProject
 {
     /// <summary>
     /// A Logger class to facilitate logging of information, errors, execution times, and solutions.
     /// </summary>
+    ///
+    /// <param>
+    /// "E" - Execution log
+    /// "O" - Log everything else
+    /// </param>
     public class Logger
     {
         /// <summary>
         /// The file path where the log is stored.
         /// </summary>
-        private readonly string LogFilePath;
+        private readonly string Execution_LogFilePath;
+        private readonly string Other_LogFilePath;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logger"/> class.
@@ -64,10 +63,15 @@ namespace KnapsackProject
             string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
                                                              "CPSC4100", "FinalProject", "FinalProject4100");
 
-            LogFilePath = Path.Combine(directoryPath, "FPexecution_log.log");
+            Execution_LogFilePath = Path.Combine(directoryPath, "FPexecution_log.log");
+            Other_LogFilePath = Path.Combine(directoryPath, "FP_log.log");
 
+            using (StreamWriter writer = new StreamWriter(Execution_LogFilePath, true))
+            {
+                writer.WriteLine("*** [TIME STAMP]: " + DateTime.Now.ToString("yyyy-MM-dd") + "} ***\n\n");
+            }
 
-            using (StreamWriter writer = new StreamWriter(LogFilePath, true))
+            using (StreamWriter writer = new StreamWriter(Other_LogFilePath, true))
             {
                 writer.WriteLine("*** [TIME STAMP]: " + DateTime.Now.ToString("yyyy-MM-dd") + "} ***\n\n");
             }
@@ -77,11 +81,21 @@ namespace KnapsackProject
         /// Logs an informational message to the log file.
         /// </summary>
         /// <param name="message">The information message to log.</param>
-        public void Info(string message)
+        public void Info(string message, string type)
         {
-            using (StreamWriter writer = new StreamWriter(LogFilePath, true))
+            if (type == "E")
             {
+                using StreamWriter writer = new StreamWriter(Execution_LogFilePath, true);
                 writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [INFO]: {message}");
+            }
+            else if (type == "O")
+            {
+                using StreamWriter writer = new StreamWriter(Other_LogFilePath, true);
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [INFO]: {message}");
+            }
+            else
+            {
+                throw new ArgumentException("[Wrong Log Type]");
             }
         }
 
@@ -89,11 +103,21 @@ namespace KnapsackProject
         /// Logs an error message to the log file.
         /// </summary>
         /// <param name="message">The error message to log.</param>
-        public void Error(string message)
+        public void Error(string message, string type)
         {
-            using (StreamWriter writer = new StreamWriter(LogFilePath, true))
+            if (type == "E")
             {
+                using StreamWriter writer = new StreamWriter(Execution_LogFilePath, true);
                 writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [ERROR]: {message}");
+            }
+            else if (type == "O")
+            {
+                using StreamWriter writer = new StreamWriter(Other_LogFilePath, true);
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [ERROR]: {message}");
+            }
+            else
+            {
+                throw new ArgumentException("[Wrong Log Type]");
             }
         }
 
@@ -101,23 +125,44 @@ namespace KnapsackProject
         /// Logs the execution time to the log file.
         /// </summary>
         /// <param name="time">The execution time in milliseconds.</param>
-        public void Time(decimal time)
+        public void Time(decimal time, string type)
         {
-            using (StreamWriter writer = new StreamWriter(LogFilePath, true))
+            if (type == "E")
             {
+                using StreamWriter writer = new StreamWriter(Execution_LogFilePath, true);
                 writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [TIME]: {time}");
             }
+            else if (type == "O")
+            {
+                using StreamWriter writer = new StreamWriter(Other_LogFilePath, true);
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [TIME]: {time}");
+            }
+            else
+            {
+                throw new ArgumentException("[Wrong Log Type]");
+            }
+
         }
 
         /// <summary>
         /// Logs the solution to the log file.
         /// </summary>
         /// <param name="solution">The solution value to log.</param>
-        public void Solution(uint solution)
+        public void Solution(uint solution, string type)
         {
-            using (StreamWriter writer = new StreamWriter(LogFilePath, true))
+            if (type == "E")
             {
+                using StreamWriter writer = new StreamWriter(Execution_LogFilePath, true);
                 writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [SOLUTION]: {solution}\n");
+            }
+            else if (type == "O")
+            {
+                using StreamWriter writer = new StreamWriter(Other_LogFilePath, true);
+                writer.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} - [SOLUTION]: {solution}\n");
+            }
+            else
+            {
+                throw new ArgumentException("[Wrong Log Type]");
             }
         }
 
@@ -134,22 +179,31 @@ namespace KnapsackProject
         /// </remarks>
         public void ClearLog()
         {
-            using (StreamWriter writer = new StreamWriter(LogFilePath, false)) { }
+            using StreamWriter writer = new(Execution_LogFilePath, false);
         }
     }
 
     //DOCUMENT
-    public static class FilePaths
+    public static class UtilityMaps
     {
         public static readonly IReadOnlyDictionary<string, string> Paths = new Dictionary<string, string>
-    {
-        { "XSmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_06_11_2024.json" },
-        { "SmallItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_06_11_2024.json" },
-        { "MediumItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_06_11_2024.json" },
-        { "LargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_06_11_2024.json" },
-        { "XLargeItems", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_06_11_2024.json" },
-        { "Capacity", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_06_11_2024.json"}
-    };
+        {
+            { "XS", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxsmalldata_06_11_2024.json" },
+            { "S", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemssmalldata_06_11_2024.json" },
+            { "M", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsmediumdata_06_11_2024.json" },
+            { "L", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemslargedata_06_11_2024.json" },
+            { "XL", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/items/itemsxlargedata_06_11_2024.json" },
+            { "C", "/Users/jbalkovec/Desktop/CPSC4100/FinalProject/FinalProject4100/data/capacity/capacitydata_06_11_2024.json"}
+        };
+
+        public static readonly IReadOnlyDictionary<string, uint> Sizes = new Dictionary<string, uint>
+        {
+            { "X", 50 },
+            { "S", 100 },
+            { "M", 250 },
+            { "L", 500 },
+            { "XL", 1000 }
+        };
     }
 
     /// <summary>
@@ -221,6 +275,36 @@ namespace KnapsackProject
                 uint includeItem = items[n - 1].Value + KnapsackRecursiveHelper(items, capacity - items[n - 1].Weight, n - 1);
                 uint excludeItem = KnapsackRecursiveHelper(items, capacity, n - 1);
                 return Math.Max(includeItem, excludeItem);
+            }
+        }
+
+        //Document
+        public static uint KnapsackRecursiveThreading(List<KnapsackItem> items, uint capacity)
+        {
+            return KnapscakRecursiveThreadingHelper(items, capacity, items.Count);
+        }
+
+        //Document
+        public static uint KnapscakRecursiveThreadingHelper(List<KnapsackItem> items, uint capacity, int n)
+        {
+            // Base case: no items or no capacity
+            if (n == 0 || capacity == 0) { return 0; }
+
+            if (items[n - 1].Weight > capacity)
+            {
+                return KnapscakRecursiveThreadingHelper(items, capacity, n - 1);
+            }
+            else
+            {
+                var includeTask = Task.Run(() =>
+                    items[n - 1].Value + KnapscakRecursiveThreadingHelper(items, capacity - items[n - 1].Weight, n - 1));
+
+                var excludeTask = Task.Run(() =>
+                    KnapscakRecursiveThreadingHelper(items, capacity, n - 1));
+
+                Task.WaitAll(includeTask, excludeTask);
+
+                return Math.Max(includeTask.Result, excludeTask.Result);
             }
         }
 
@@ -304,7 +388,8 @@ namespace KnapsackProject
 
             var key = (remainingCapacity, currentIndex);
 
-            if (memo.ContainsKey(key)) {
+            if (memo.ContainsKey(key))
+            {
                 // DEBUG
                 //Console.WriteLine($"Cache hit for key: {key}");
                 return memo[key];
@@ -373,7 +458,7 @@ namespace KnapsackProject
                 Console.WriteLine($"JSON Parsing Error: {ex.Message}");
             }
             return null;
-        }   
+        }
 
         /// <summary>
         /// Prints the details of a list of Knapsack items to the console.
@@ -399,7 +484,7 @@ namespace KnapsackProject
             {
                 Console.WriteLine("An error occurred: " + ex.Message); // No need to log error --> Testing Purposes Only!
             }
-   
+
         }
 
         /// <summary>
@@ -438,8 +523,8 @@ namespace KnapsackProject
         {
             if (capacities == null || capacities.Count == 0) { return null; }
 
-            Random random = new Random(); 
-            int randomIndex = random.Next(capacities.Count); 
+            Random random = new Random();
+            int randomIndex = random.Next(capacities.Count);
             return capacities[randomIndex];
         }
 
@@ -450,38 +535,36 @@ namespace KnapsackProject
         /// <param name="logger">The logger instance to record execution time, method details, and solutions.</param>
         public static void CollectData(Logger logger)
         {
-            // Initialize stopwatch and set capacity file path
+
             Stopwatch stopwatch = new Stopwatch();
-            const string CapacityFile = "Capacity";
+            const string CapacityFile = "C";
             uint testNumber = 1;
 
-            logger.Info("COLLECTING DATA...\n");
-
-            // Define methods for easier expansion and reduced repetition
             var methods = new (string MethodName, Func<List<KnapsackItem>, uint, uint> Algorithm)[]
             {
-        ("Recursive", KnapsackRecursive),
-        ("DP", KnapsackDP),
-        ("Memo", KnapsackMemo)
+                ("Recursive", KnapsackRecursive),
+                ("Recursive + Threading", KnapsackRecursiveThreading),
+                ("DP", KnapsackDP),
+                ("Memo", KnapsackMemo)
             };
 
-            // Run tests for each method and each item set
             foreach (var method in methods)
             {
-                foreach (var itemKey in FilePaths.Paths.Keys.Where(k => k != CapacityFile))
+                foreach (var itemKey in UtilityMaps.Paths.Keys.Where(k => k != CapacityFile))
                 {
-                    logger.Info($" *** [TEST #{testNumber}] *** \n");
+#pragma warning disable // Assume not null
 
-                    // Read item and capacity data
-                    List<KnapsackItem> items = ReadItemsFromJsonFile<KnapsackItem>(FilePaths.Paths[itemKey]);
-                    List<CapacityItem> capacities = ReadItemsFromJsonFile<CapacityItem>(FilePaths.Paths[CapacityFile]);
+                    List<KnapsackItem> items = ReadItemsFromJsonFile<KnapsackItem>(UtilityMaps.Paths[itemKey]);
+                    List<CapacityItem> capacities = ReadItemsFromJsonFile<CapacityItem>(UtilityMaps.Paths[CapacityFile]);
 
-                    // Get random capacity item
                     CapacityItem randomCapacity = YieldRandomCapacity(capacities);
                     uint unpackedCapacity = randomCapacity.Capacity;
-
-                    // Skip certain item sets for recursive method
-                    if (method.MethodName == "Recursive" && (itemKey == "XLargeItems" || itemKey == "LargeItems" || itemKey == "MediumItems"))
+#pragma warning restore
+                    if ((method.MethodName == "Recursive"
+                        || method.MethodName == "Recursive + Threading") &&
+                        (itemKey == "XL" ||
+                         itemKey == "L" ||
+                         itemKey == "M"))
                     {
                         LogResults(logger, testNumber, method.MethodName, itemKey, unpackedCapacity, execTime: -1, solution: 0);
                         testNumber++;
@@ -514,37 +597,38 @@ namespace KnapsackProject
         /// <param name="solution">The solution value returned by the algorithm, or 0 if the test was skipped.</param>
         private static void LogResults(Logger logger, uint testNumber, string method, string itemKey, uint capacity, decimal execTime, uint solution)
         {
-            logger.Info($" *** [TEST #{testNumber}] *** \n");
-            logger.Info($"Method: {method}");
-            logger.Time(execTime);
-            logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {capacity}");
-            logger.Solution(solution);
-            logger.Info("\n" + new string('-', 40) + "\n");
+            logger.Info($" *** [TEST #{testNumber}] *** \n", "E");
+            logger.Info($"Method: {method}", "E");
+            logger.Time(execTime, "E");
+            logger.Info($"FOR: [ITEMS]: {itemKey}, [CAPACITY]: {capacity}", "E");
+            logger.Solution(solution, "E");
+            logger.Info("\n" + new string('-', 40) + "\n", "E");
         }
 
-
-
-        /// <summary>
-        /// The entry point of the application. Initializes the logger, measures the execution time of the 
-        /// knapsack algorithm, logs the results.
-        /// </summary>
+        // The entry point of the application. Initializes the logger, measures the execution time of the 
+        // knapsack algorithm, logs the results.
         public static void Main()
         {
             var logger = new Logger();
+            logger.ClearLog();
+
             const uint NumTests = 5;
 
-            for(int i = 0; i < NumTests; i++)
+            try
             {
-                CollectData(logger);
+                for (int i = 0; i < NumTests; i++)
+                {
+                    CollectData(logger);
+                }
             }
-
-            Console.WriteLine("**** [DONE] ****");
-            Console.ReadLine();
+            catch (Exception ex)
+            {
+                logger.Info($"Critical error in the main loop: {ex.Message}", "O");
+            }
         }
+
     }
 
-}
-
-
+} // namespace: KnapsackProject
 
 
