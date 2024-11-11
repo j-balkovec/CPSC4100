@@ -1,26 +1,30 @@
 ﻿<Properties StartupConfiguration="{9B38E63A-41A8-4836-8472-982BB283FA81}|Default">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Knapsack.cs">
+  <MonoDevelop.Ide.ItemProperties.FinalProject4100 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FPUnitTests/UnitTest1.cs">
     <Files>
-      <File FileName="Knapsack.cs" Line="466" Column="15" />
-      <File FileName="FPexecution_log.log" Line="914" Column="1" />
+      <File FileName="Knapsack.cs" Line="248" Column="26" />
+      <File FileName="FPexecution_log.log" />
+      <File FileName="FPUnitTests/UnitTest1.cs" Line="16" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FP4100">
-            <Node name="FinalProject4100">
-              <Node name="Knapsack.cs" selected="True" />
-            </Node>
+          <Node name="FP4100" expanded="True">
+            <Node name="FinalProject4100" expanded="True" />
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="FP4100" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.FinalProject4100 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

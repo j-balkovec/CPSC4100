@@ -7,9 +7,11 @@
 /// <version>
 /// Revision History
 /// - [1.0] Recursive Solution Design, Debugging
-/// - [2.0] DP Solution Implementation, Initial Documentation
-/// - [3.0] Performance Measurement and Heuristic Implementation
-/// - [4.0] ADD TODO
+/// - [1.1] DP Solution Implementation, Initial Documentation
+/// - [1.2] Performance Measurement and Heuristic Implementation
+/// - [1.3] Bug fixes, performance impovements
+/// - [1.4] Prettified the output
+/// - [1.5] Unit Tests
 /// </version>
 /// 
 /// <summary>
@@ -183,7 +185,9 @@ namespace KnapsackProject
         }
     }
 
-    //DOCUMENT
+    /// <summary>
+    /// Dictionaries used for file reading and some intermediate computations.
+    /// </summary>
     public static class UtilityMaps
     {
         public static readonly IReadOnlyDictionary<string, string> Paths = new Dictionary<string, string>
@@ -240,7 +244,10 @@ namespace KnapsackProject
         public uint Capacity { get; set; }
     }
 
-    class Knapsack
+    /// <summary>
+    /// Holds the methods (DP, Recursive, Memo)
+    /// </summary>
+    public class Knapsack
     {
 
         /// <summary>
@@ -278,14 +285,25 @@ namespace KnapsackProject
             }
         }
 
-        //Document
+        /// <summary>
+        /// Helper method for solving the knapsack problem recursively with threading.
+        /// </summary>
+        /// <param name="items">A list of knapsack items, where each item has a weight and value.</param>
+        /// <param name="capacity">The remaining weight capacity of the knapsack.</param>
+        /// <param name="n">The number of items to consider from the list.</param>
+        /// <returns>The maximum value that can be obtained by including or excluding the current item, recursively solving the subproblem.</returns>
         public static uint KnapsackRecursiveThreading(List<KnapsackItem> items, uint capacity)
         {
             return KnapscakRecursiveThreadingHelper(items, capacity, items.Count);
         }
 
-        //Document
-        public static uint KnapscakRecursiveThreadingHelper(List<KnapsackItem> items, uint capacity, int n)
+        /// <summary>
+        /// Solves the knapsack problem using recursion and threading.
+        /// </summary>
+        /// <param name="items">A list of knapsack items, where each item has a weight and value.</param>
+        /// <param name="capacity">The maximum weight capacity of the knapsack.</param>
+        /// <returns>The maximum value that can be obtained by filling the knapsack with the given items.</returns>
+        private static uint KnapscakRecursiveThreadingHelper(List<KnapsackItem> items, uint capacity, int n)
         {
             // Base case: no items or no capacity
             if (n == 0 || capacity == 0) { return 0; }
