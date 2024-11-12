@@ -561,7 +561,7 @@ namespace KnapsackProject
             var methods = new (string MethodName, Func<List<KnapsackItem>, uint, uint> Algorithm)[]
             {
                 ("Recursive", KnapsackRecursive),
-                ("Recursive + Threading", KnapsackRecursiveThreading),
+                //("Recursive + Threading", KnapsackRecursiveThreading),
                 ("DP", KnapsackDP),
                 ("Memo", KnapsackMemo)
             };
