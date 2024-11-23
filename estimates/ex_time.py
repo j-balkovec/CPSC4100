@@ -17,7 +17,6 @@ from decimal import Decimal # import to handle large numbers with percision
           # where m and n are some arbitrary integers > 0
 #         {"items": m, "estimated_time_seconds": Decimal(n)},
 
-# Recursive Knapsack Data
 recursive_knapsack = {
     "execution_times": [
         {"timestamp": "2024-11-10 20:31:12,938", "description": "Recursive Knapsack completed"}
@@ -31,7 +30,6 @@ recursive_knapsack = {
     ]
 }
 
-# Memoized Knapsack Data
 dp_knapsack = {
     "execution_times": [
         {"timestamp": "2024-11-10 20:31:12,939", "description": "DP Knapsack completed"}
@@ -45,7 +43,6 @@ dp_knapsack = {
     ]
 }
 
-# DP Knapsack Data
 memoized_knapsack = {
     "execution_times": [
         {"timestamp": "2024-11-10 20:31:12,939", "description": "Memo Knapsack completed"}
@@ -74,19 +71,16 @@ def convert_time(milliseconds):
         ("millennia", Decimal(1000 * 60 * 60 * 24 * 365.25 * 1000))
     ]
     
-    # Loop through units to find the appropriate one for the time value
     for i in range(len(units) - 1, -1, -1):
         name, unit_milliseconds = units[i]
         if milliseconds >= unit_milliseconds:
             time_value = milliseconds / unit_milliseconds
-            # Use scientific notation if time_value is very large
             if time_value >= Decimal('1e6'):
                 time_value_str = f"{time_value:.2e}"
                 return f"{time_value_str} {name}"
             else:
                 return f"{time_value:.2f} {name}"
 
-    # If the time is less than 1 millisecond, keep it in milliseconds
     return f"{milliseconds:.2f} milliseconds"
 
   
@@ -99,7 +93,6 @@ def print_estimates(knapsack_data, knapsack_type):
         print(f"Estimated time for {knapsack_type} Knapsack with {items} items: {readable_time}")
     print("\n")
 
-# Call the function for each knapsack type
 print_estimates(recursive_knapsack, "Recursive")
 print_estimates(memoized_knapsack, "Memoized")
 print_estimates(dp_knapsack, "DP")

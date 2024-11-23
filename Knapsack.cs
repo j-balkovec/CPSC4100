@@ -533,6 +533,34 @@ namespace KnapsackProject
         }
 
         /// <summary>
+        /// Starts a stopwatch that tracks and displays the elapsed time in the terminal.
+        /// The stopwatch updates live every 10 milliseconds and displays the time in the format MM:SS:MS.
+        /// The user can stop the stopwatch by pressing Ctrl+C.
+        /// </summary>
+        public static void Stopwatch(CancellationToken cancellationToken)
+        {
+            Stopwatch stopwatch = new Stopwatch();  
+            stopwatch.Start();
+
+            try
+            {
+                while (!cancellationToken.IsCancellationRequested)
+                {
+                    TimeSpan elapsedTime = stopwatch.Elapsed;
+
+                    string timeString = string.Format("{0:D2}:{1:D2}:{2:D3}",
+                        elapsedTime.Minutes, elapsedTime.Seconds, elapsedTime.Milliseconds);
+
+                    Console.SetCursorPosition(0, 0);
+                    Console.Write(timeString);  
+
+                    Thread.Sleep(10);
+                }
+            }
+            catch (ThreadInterruptedException) { Console.WriteLine("\n( - [STOP] - )"); }
+        }
+
+        /// <summary>
         /// Picks a random <see cref="CapacityItem"/> from the provided list.
         /// </summary>
         /// <param name="capacities">A list of <see cref="CapacityItem"/> from which to select a random item.</param>
@@ -623,14 +651,21 @@ namespace KnapsackProject
             logger.Info("\n" + new string('-', 40) + "\n", "E");
         }
 
-        // The entry point of the application. Initializes the logger, measures the execution time of the 
-        // knapsack algorithm, logs the results.
+        /// <summary>
+        /// * The entry point of the application. Initializes the logger, measures the execution time of the 
+        ///   knapsack algorithm, logs the results.
+        /// </summary>
         public static void Main()
         {
             var logger = new Logger();
             logger.ClearLog();
 
             const uint NumTests = 5;
+
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
+            Thread stopwatchThread = new Thread(() => Stopwatch(cancellationTokenSource.Token));
+            stopwatchThread.Start();
 
             try
             {
@@ -642,6 +677,12 @@ namespace KnapsackProject
             catch (Exception ex)
             {
                 logger.Info($"Critical error in the main loop: {ex.Message}", "O");
+            }
+            finally
+            {
+                // after the loop ends, stop the stopwatch
+                cancellationTokenSource.Cancel();  // request cancellation
+                stopwatchThread.Join();
             }
         }
 
