@@ -132,7 +132,7 @@ tuples %>%
 ### Comparing Algorithm Performance
 ```{r, echo=TRUE, results='show'}
 # Calculate the minimum capacity
-min_capacity <- min(combined_tuples$Capacity, na.rm = TRUE)
+min_capacity <- min(combined_tuples$Capacity)
 
 ggplot(combined_tuples, aes(x = Type, y = Solution, fill = Type)) +
   stat_summary(fun = mean, geom = "bar", color = "black") + 
@@ -155,10 +155,12 @@ ggplot(combined_tuples, aes(x = Type, y = Solution, fill = Type)) +
   geom_jitter(color = "black", width = 0.2, alpha = 0.5) +
   theme_minimal() +
   labs(title = "Average Solution by Algorithm Type with Data Points", 
-       x = "Algorithm Type", y = "Average Capacity") +
+       x = "Algorithm Type", y = "Average Solution") +
   theme(plot.title = element_text(hjust = 0.5, size = 16), 
         axis.text = element_text(size = 12),  
         axis.title = element_text(size = 14))
+
+# Bins show mean, points are individual solutions, error bars are error bars
 ```
 
 ### Performance by Problem Size
@@ -213,7 +215,7 @@ ggplot(tuples %>% filter(Type == "Recursive"), aes(x = Time, y = Solution)) +
 ```
 ### Plot with Subplots
 ```{r, echo=TRUE, results='show'}
-mega_plot <- ggplot(tuples, aes(x = Time, y = Solution)) +
+ggplot(tuples, aes(x = Time, y = Solution)) +
   geom_point(aes(color = Type)) +  # Color by Type
   theme_minimal() +
   labs(title = "Runtime vs Solution Quality by Algorithm", 
@@ -230,7 +232,7 @@ mega_plot <- ggplot(tuples, aes(x = Time, y = Solution)) +
 ```{r, echo=TRUE, results='show'}
 # Plot for DP
 ggplot(tuples %>% filter(Type == "DP"), aes(x = Time, y = Capacity)) +
-  geom_point(color = "tomato") +
+  geom_point(aes(color = Size)) +
   theme_minimal() +
   labs(title = "DP Runtime vs Capacity", x = "DP Runtime", y = "Capacity")
 ```
@@ -238,15 +240,16 @@ ggplot(tuples %>% filter(Type == "DP"), aes(x = Time, y = Capacity)) +
 ```{r, echo=TRUE, results='show'}
 # Plot for Memo
 ggplot(tuples %>% filter(Type == "Memo"), aes(x = Time, y = Capacity)) +
-  geom_point(color = "springgreen3") +
+  geom_point(aes(color = Size)) +
   theme_minimal() +
   labs(title = "Memo Runtime vs Capacity", x = "Memo Runtime", y = "Capacity")
 ```
 
 ```{r, echo=TRUE, results='show'}
 # Plot for Recursive
-ggplot(tuples %>% filter(Type == "Recursive"), aes(x = Time, y = Capacity)) +
-  geom_point(color = "royalblue2") +
+print(tuples_clean_rec)
+ggplot(tuples_clean_rec, aes(x = Time, y = Capacity)) +
+  geom_point(aes(color = Size)) +
   theme_minimal() +
   labs(title = "Recursive Runtime vs Capacity", x = "Recursive Runtime", y = "Capacity")
 ```
@@ -255,59 +258,64 @@ ggplot(tuples %>% filter(Type == "Recursive"), aes(x = Time, y = Capacity)) +
 ```{r, echo=TRUE, results='show'}
 
 # ----------- DP -----------
-# Relationship:
+# Relationship: Quadratic model
 #
-# Linear relationship between DP Execution Time and the Capacity
-# EQN: a * (Capacity) + b
-#
-lm_dp <- lm(Time ~ Capacity, data = tuples_clean_DP)
+# Quadratic relationship between DP Execution Time and Capacity
+# EQN: a * (Capacity^2) + b * (Capacity) + c
 
-intercept_dp <- coef(lm_dp)[1]
-slope_dp <- coef(lm_dp)[2]
-r_squared_dp <- summary(lm_dp)$r.squared
+lm_dp_quad <- lm(Time ~ Capacity + I(Capacity^2), data = tuples_clean_DP)
 
-reg_eq_dp <- paste("y = ", round(slope_dp, 5), " * Capacity - ", (-1) * round(intercept_dp, 2), 
-                     "\n", "R² = ", 1 - round(r_squared_dp, 3))
+intercept_dp_quad <- coef(lm_dp_quad)[1]
+slope_dp_quad <- coef(lm_dp_quad)[2]
+quad_slope_dp <- coef(lm_dp_quad)[3]
+r_squared_dp_quad <- summary(lm_dp_quad)$r.squared
+
+reg_eq_dp_quad <- paste("y = ", round(quad_slope_dp, 4), " Capacity² + ", round(slope_dp_quad, 2), " * Capacity + ", round(intercept_dp_quad, 2),
+                        "\n", "R² = ", round(r_squared_dp_quad, 3))
 
 ggplot(tuples %>% filter(Type == "DP"), aes(x = Capacity, y = Time)) +
-  geom_point(color = "tomato") +  
-  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, color = "brown") +  
+  geom_point(color = "tomato") +  # Plot the data points
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "brown") +  # Quadratic fit
   theme_minimal() +
-  labs(title = "DP Runtime vs Capacity with Linear Regression", 
+  labs(title = "DP Runtime vs Capacity with Quadratic Regression", 
        x = "Capacity", y = "DP Runtime") +
   theme(plot.title = element_text(hjust = 0.5)) +
   annotate("text", x = max(tuples_clean_DP$Capacity) * 0.5, 
            y = max(tuples_clean_DP$Time) * 0.9,
-           label = reg_eq_dp, color = "black", size = 5, hjust = 0)
+           label = reg_eq_dp_quad, color = "black", size = 5, hjust = 0)
 # ----------- DP -----------
 ```
 
 ```{r, echo=TRUE, results='show'}
 # ---------- Memo ----------
-# Relationship:
+# Relationship: Quadratic model
 #
-# Linear relationship between Memo Execution Time and the Capacity
-# EQN: a * (Capacity) + b
-#
-lm_memo <- lm(Time ~ Capacity, data = tuples_clean_memo)
+# Quadratic relationship between Memo Execution Time and Capacity
+# EQN: a * (Capacity^2) + b * (Capacity) + c
 
-intercept_memo <- coef(lm_memo)[1]
-slope_memo <- coef(lm_memo)[2]
-r_squared_memo <- summary(lm_memo)$r.squared
+lm_memo_quad <- lm(Time ~ Capacity + I(Capacity^2), data = tuples_clean_memo)
 
-reg_eq_memo <- paste("y = ", round(slope_memo, 2), " * Capacity + ", round(intercept_memo, 2), 
-                     "\n", "R² = ", 1 - round(r_squared_memo, 3))
+intercept_memo_quad <- coef(lm_memo_quad)[1]
+slope_memo_quad <- coef(lm_memo_quad)[2]
+quad_slope_memo <- coef(lm_memo_quad)[3]
+r_squared_memo_quad <- summary(lm_memo_quad)$r.squared
+
+reg_eq_memo_quad <- paste("y = ", round(quad_slope_memo, 4), " * Capacity² + ", round(slope_memo_quad, 2), " * Capacity + ", round(intercept_memo_quad, 2),
+                          "\n", "R² = ", 1 - round(r_squared_memo_quad, 3))
+
+print(reg_eq_memo_quad)
 
 ggplot(tuples %>% filter(Type == "Memo"), aes(x = Capacity, y = Time)) +
   geom_point(color = "springgreen3") +  # Plot the data points
-  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, color = "brown") + 
+  geom_smooth(method = "lm", formula = y ~ poly(x, 2), se = FALSE, color = "brown") + 
   theme_minimal() +
-  labs(title = "Memo Runtime vs Capacity with Linear Regression", 
+  labs(title = "Memo Runtime vs Capacity with Quadratic Regression", 
        x = "Capacity", y = "Memo Runtime") +
   theme(plot.title = element_text(hjust = 0.5)) +
   annotate("text", x = max(tuples_clean_memo$Capacity) * 0.5, 
            y = max(tuples_clean_memo$Time) * 0.9,
-           label = reg_eq_memo, color = "black", size = 5, hjust = 0)
+           label = reg_eq_memo_quad, color = "black", size = 5, hjust = 0)
+
 # ---------- Memo ----------
 ```
 
