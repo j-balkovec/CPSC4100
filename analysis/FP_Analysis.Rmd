@@ -77,8 +77,8 @@ custom_summary <- function(df) {
     )
 }
 
-table <- function(tuples) {
-  kable(custom_summary(tuples), "html", caption = "Custom Summary of Recursive Tuples") %>%
+table <- function(tuples, name) {
+  kable(custom_summary(tuples), "html", caption = paste("Custom Summary of", name, "Tuples")) %>%
   kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%
   column_spec(1:6, width = "100px")
 }
@@ -86,9 +86,9 @@ summary_rec <- as.data.frame(summary(tuples_clean_rec))
 summary_dp <- as.data.frame(summary(tuples_clean_DP))
 summary_memo <- as.data.frame(summary(tuples_clean_memo))
 
-table(tuples_clean_rec)
-table(tuples_clean_DP)
-table(tuples_clean_memo)
+table(tuples_clean_rec, "Recursive")
+table(tuples_clean_DP, "DP")
+table(tuples_clean_memo, "Memo")
 ```
 ###  Distribution Analysis
 ```{r, echo=TRUE, results='show'}
@@ -131,16 +131,21 @@ tuples %>%
 
 ### Comparing Algorithm Performance
 ```{r, echo=TRUE, results='show'}
-ggplot(combined_tuples, aes(x = Type, y = Capacity, fill = Type)) +
+# Calculate the minimum capacity
+min_capacity <- min(combined_tuples$Capacity, na.rm = TRUE)
+
+ggplot(combined_tuples, aes(x = Type, y = Solution, fill = Type)) +
   stat_summary(fun = mean, geom = "bar", color = "black") + 
   stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.2, color = "black") +
-  geom_jitter(color = "black", width = 0.2, alpha = 0.5) +
+  geom_jitter(aes(color = Type), width = 0.2, alpha = 0.5) +  # Map color to Type
+  scale_color_manual(values = c("DP" = "tomato", "Memo" = "springgreen3", "Recursive" = "royalblue2")) +  # Set specific colors
   theme_minimal() +
-  labs(title = "Average Capacity by Algorithm Type with Data Points", 
-       x = "Algorithm Type", y = "Average Capacity") +
+  labs(title = "Solution by Algorithm Type with Data Points", 
+       x = "Algorithm Type", y = "Solution") +
   theme(plot.title = element_text(hjust = 0.5, size = 16), 
         axis.text = element_text(size = 12),  
-        axis.title = element_text(size = 14))
+        axis.title = element_text(size = 14)) +
+  scale_y_continuous(limits = c(min_capacity, NA))
 ```
 
 ```{r}
@@ -205,6 +210,20 @@ ggplot(tuples %>% filter(Type == "Recursive"), aes(x = Time, y = Solution)) +
   geom_point(color = "royalblue2") +
   theme_minimal() +
   labs(title = "Recursive Runtime vs Solution Quality", x = "Recursive Runtime", y = "Solution Quality")
+```
+### Plot with Subplots
+```{r, echo=TRUE, results='show'}
+mega_plot <- ggplot(tuples, aes(x = Time, y = Solution)) +
+  geom_point(aes(color = Type)) +  # Color by Type
+  theme_minimal() +
+  labs(title = "Runtime vs Solution Quality by Algorithm", 
+       x = "Runtime", 
+       y = "Solution Quality") +
+  facet_wrap(~ Type, scales = "free") +  # Create separate plots for each Type
+  scale_color_manual(values = c("DP" = "tomato", "Memo" = "springgreen3", "Recursive" = "royalblue2")) +
+  theme(plot.title = element_text(hjust = 0.5, size = 16), 
+        axis.text = element_text(size = 12),  
+        axis.title = element_text(size = 14))
 ```
 
 ### Relationship Between Runtime and Solution Quality
