@@ -1,5 +1,5 @@
 # CPSC 4100 Design and Analysis of Algorithms  
-**Final Project**
+**Final Project (Modified)**
 
 You may code in C++ or C#, using the free (student) licenses available on [JetBrains](https://www.jetbrains.com/) for effective IDEs. Individual files must be uploaded to Canvas.  
 **Do NOT upload projects or zip files.**
