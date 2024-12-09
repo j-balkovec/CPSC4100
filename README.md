@@ -6,9 +6,8 @@ You may code in C++ or C#, using the free (student) licenses available on [JetBr
 
 ## 1. In C++ (CLion) or C# (Rider), to solve the 0-1 Knapsack problem, implement:
    - **a)** an optimal (yes, exponential) algorithm  
-   - **b)** any one of the Greedy heuristics described in [JSR.org Article](https://www.jsr.org/hs/index.php/path/article/view/5660/2586)
-     - **i.** Briefly describe why you choose the heuristic that you did  
-     - **ii.** Use the same language for implementation as in **a)**
+   - **b)** a DP approach to solve the algorithm 
+     - **i.** Use the same language for implementation as in **a)**
 
 ## 2. Construct, or reuse with acknowledgement, a few data sets:
    - **a)** You may generate several data sets separately  
