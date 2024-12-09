@@ -22,7 +22,7 @@ suppressPackageStartupMessages(library(knitr))
 suppressPackageStartupMessages(library(kableExtra))
 suppressPackageStartupMessages(library(pander))
 
-file_name <- "Results.xlsx"
+file_name <- "excel_data/Results.xlsx"
 sheet_name <- "Raw"
 
 data <- read_excel(file_name, sheet = sheet_name)
